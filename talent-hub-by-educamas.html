@@ -1,0 +1,1348 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<title>Talent Hub by Educamás</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --blue:#0B0B0C;--blue-d:#000000;--blue-50:#F0F0EE;--blue-100:#E2E2DE;
+  --yel:#FDC300;--yel-d:#C79300;--yel-50:#FFF7D6;
+  --ink:#0B0B0C;--ink2:#4A4A4F;--mut:#8A8A90;--line:#E6E6E2;--line2:#F0F0ED;
+  --bg:#F4F4F1;--card:#FFFFFF;--soft:#FAFAF8;
+  --green:#12893F;--green-50:#E8F5EC;--red:#D93A3F;--red-50:#FCEBEB;
+  --purple:#3A3A3E;--purple-50:#EDEDEA;--teal:#6B6B70;--teal-50:#F0F0ED;
+  --sh:0 1px 2px rgba(11,11,12,.05),0 12px 32px -16px rgba(11,11,12,.22);
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg)}
+body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--ink);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:6px}
+.ico{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ico.sm{width:14px;height:14px}.ico.lg{width:24px;height:24px}.ico.xl{width:38px;height:38px;stroke-width:1.5}
+h1,h2,h3{letter-spacing:-.02em;line-height:1.2;text-wrap:balance}
+.num{font-variant-numeric:tabular-nums}
+
+/* ---------- Top presenter bar ---------- */
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
+.top-in{max-width:1480px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;gap:18px}
+.logo{font-weight:800;font-size:23px;color:var(--blue);letter-spacing:-.045em;position:relative;display:inline-flex;align-items:center;line-height:1;padding-right:10px}
+.logo .spark{position:absolute;right:-2px;top:-7px;width:13px;height:13px;fill:var(--yel);stroke:none}
+.logo.sm{font-size:19px}
+.top-title{font-size:12px;color:var(--mut);border-left:1px solid var(--line);padding-left:16px;line-height:1.3}
+.top-title b{color:var(--ink);display:block;font-size:13.5px}
+.tabs{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{display:flex;align-items:center;gap:8px;padding:7px 13px 7px 7px;border-radius:999px;font-weight:600;font-size:13px;color:var(--ink2);white-space:nowrap}
+.tab .n{width:24px;height:24px;border-radius:50%;background:var(--yel-50);color:var(--ink);display:grid;place-items:center;font-size:12px;font-weight:800}
+.tab:hover{background:var(--bg)}
+.tab.on{background:var(--ink);color:#fff}.tab.on .n{background:var(--yel)}
+
+/* ---------- Caption ---------- */
+.cap{max-width:1480px;margin:0 auto;padding:22px 24px 16px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.cap .bnum{width:46px;height:46px;border-radius:50%;background:var(--yel);font-weight:800;font-size:21px;display:grid;place-items:center;flex:none}
+.cap h1{font-size:23px}.cap h1 span{font-weight:600;color:var(--ink2)}
+.cap p{color:var(--ink2);font-size:14px}
+.flow{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;flex-wrap:wrap}
+.flow .f{padding:6px 11px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--mut);display:flex;gap:6px;align-items:center}
+.flow .f.on{border-color:var(--blue);color:var(--blue);background:var(--blue-50)}
+.flow .ar{color:var(--mut)}
+
+/* ---------- App frame ---------- */
+.frame{max-width:1480px;margin:0 auto 48px;padding:0 24px}
+.app{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh);overflow:hidden;display:grid;grid-template-columns:224px minmax(0,1fr);grid-template-rows:auto 1fr;min-height:780px}
+.app-h{grid-column:1/-1;display:flex;align-items:center;gap:14px;padding:12px 22px;border-bottom:1px solid var(--line);background:#fff}
+.prod{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;padding-left:14px;border-left:1px solid var(--line)}
+.prod i{width:24px;height:24px;border-radius:7px;display:grid;place-items:center}
+.prod i .ico{width:14px;height:14px}
+.app-h .right{margin-left:auto;display:flex;align-items:center;gap:10px;position:relative}
+.icon-btn{position:relative;width:38px;height:38px;border-radius:10px;display:grid;place-items:center;color:var(--ink2)}
+.icon-btn:hover{background:var(--bg)}
+.icon-btn .dot{position:absolute;top:8px;right:9px;width:8px;height:8px;border-radius:50%;background:var(--red);border:2px solid #fff}
+.me{display:flex;align-items:center;gap:9px;font-weight:600;font-size:13px;padding:4px 8px 4px 4px;border-radius:999px}
+.me:hover{background:var(--bg)}
+.pop{position:absolute;top:46px;right:0;width:320px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--sh);padding:8px;z-index:20}
+.pop .it{display:flex;gap:10px;padding:10px;border-radius:10px;font-size:13px}
+.pop .it:hover{background:var(--bg)}
+.pop .it small{display:block;color:var(--mut);font-size:11.5px}
+.side{border-right:1px solid var(--line);padding:16px 12px;display:flex;flex-direction:column;gap:2px;background:var(--soft)}
+.nav{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:10px;color:var(--ink2);font-weight:600;font-size:13.5px;text-align:left;width:100%}
+.nav:hover{background:#fff;color:var(--ink)}
+.nav.on{background:var(--blue-50);color:var(--blue)}
+.nav .badge{margin-left:auto;background:var(--red);color:#fff;font-size:10.5px;border-radius:999px;padding:1px 7px;font-weight:700}
+.side-foot{margin-top:auto;padding:14px;border-radius:14px;background:var(--yel-50);font-size:12.5px;color:var(--ink2)}
+.side-foot b{display:block;color:var(--ink);margin-bottom:4px}
+.main{padding:24px 28px 32px;min-width:0}
+.ph{display:flex;align-items:flex-start;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.ph h2{font-size:21px}.ph p{color:var(--ink2);font-size:13.5px;margin-top:2px}
+.ph .act{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+
+/* ---------- Primitives ---------- */
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px}
+.card.soft{background:var(--soft)}
+.card h3{font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.card h3 .lnk{margin-left:auto}
+.lnk{color:var(--blue);font-weight:600;font-size:12.5px;display:inline-flex;gap:4px;align-items:center}
+.lnk:hover{text-decoration:underline}
+.g{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}.g5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.split{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:18px;align-items:start}
+.stack{display:flex;flex-direction:column;gap:16px}
+.row{display:flex;align-items:center;gap:10px}
+.muted{color:var(--mut)}.ink2{color:var(--ink2)}
+.small{font-size:12.5px}.xs{font-size:11.5px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 16px;border-radius:10px;font-weight:700;font-size:13.5px;transition:background .15s,transform .1s;white-space:nowrap}
+.btn:active{transform:translateY(1px)}
+.btn-p{background:var(--blue);color:#fff}.btn-p:hover{background:var(--blue-d)}
+.btn-o{border:1px solid var(--line);background:#fff;color:var(--ink)}.btn-o:hover{border-color:var(--blue);color:var(--blue)}
+.btn-y{background:var(--yel);color:var(--ink)}.btn-y:hover{background:#F5B400}
+.btn-g{background:var(--green-50);color:var(--green)}
+.btn-sm{padding:7px 12px;font-size:12.5px;border-radius:9px}
+.btn-block{width:100%}
+.btn-xl{padding:15px 20px;font-size:15px;border-radius:12px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:10px;border:1px solid var(--line);background:#fff;font-weight:600;font-size:12.5px;color:var(--ink2)}
+.chip:hover{border-color:var(--blue-100)}
+.chip.on{background:var(--blue-50);border-color:var(--blue);color:var(--blue)}
+.chip .ico{width:15px;height:15px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.tag{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;font-size:11.5px;font-weight:700;background:var(--bg);color:var(--ink2);white-space:nowrap}
+.tag.b{background:var(--blue-50);color:var(--blue)}.tag.y{background:var(--yel-50);color:#9A6700}.tag.gr{background:var(--green-50);color:#0E7C3E}.tag.r{background:var(--red-50);color:#B42318}.tag.p{background:var(--purple-50);color:var(--purple)}.tag.t{background:var(--teal-50);color:#0A7885}
+.av{border-radius:50%;display:inline-grid;place-items:center;color:#fff;font-weight:800;flex:none;letter-spacing:-.02em;text-shadow:0 1px 2px rgba(0,0,0,.15)}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.field label,.lbl{font-size:12.5px;font-weight:700;color:var(--ink)}
+.lbl small,.field label small{color:var(--mut);font-weight:500}
+.inp{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;font-size:13.5px;transition:border-color .15s,box-shadow .15s}
+.inp:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-50)}
+select.inp{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238A8A90' stroke-width='2.4'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
+textarea.inp{resize:vertical;min-height:72px}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.seg{display:inline-flex;background:var(--bg);border-radius:10px;padding:3px;gap:2px;flex-wrap:wrap}
+.seg button{padding:7px 12px;border-radius:8px;font-weight:600;font-size:12.5px;color:var(--ink2)}
+.seg button.on{background:#fff;color:var(--blue);box-shadow:0 1px 3px rgba(11,11,12,.12)}
+.tabsline{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.tabsline button{padding:8px 14px;border-radius:9px;font-weight:600;font-size:13px;color:var(--ink2);background:var(--bg)}
+.tabsline button.on{background:var(--blue);color:#fff}
+.tabsline button .c{opacity:.7;font-weight:500}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--ink2);cursor:pointer}
+.check input{width:17px;height:17px;accent-color:var(--blue);margin-top:1px;flex:none}
+.switch{width:38px;height:22px;border-radius:999px;background:var(--line);position:relative;flex:none;transition:background .2s}
+.switch::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.2);transition:transform .2s}
+.switch.on{background:var(--green)}.switch.on::after{transform:translateX(16px)}
+.progress{height:8px;background:var(--line2);border-radius:999px;overflow:hidden}
+.progress>i{display:block;height:100%;background:var(--blue);border-radius:999px;transition:width .5s}
+.progress.g>i{background:var(--green)}.progress.y>i{background:var(--yel-d)}
+hr.sep{border:0;border-top:1px solid var(--line);margin:14px 0}
+.empty{padding:28px;text-align:center;color:var(--mut);font-size:13px}
+.tbl-wrap{overflow-x:auto}
+table.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut);font-weight:700;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+.tbl td{padding:11px 12px;border-bottom:1px solid var(--line2);vertical-align:middle}
+.tbl tr:hover td{background:var(--soft)}
+.icsq{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:none}
+
+/* ---------- Registro ---------- */
+.reg{display:grid;grid-template-columns:320px minmax(0,1fr);gap:22px}
+.hero{border-radius:18px;background:linear-gradient(160deg,#FFD447 0%,#FFC21A 45%,#F5A300 100%);padding:24px;position:relative;overflow:hidden;min-height:560px;display:flex;flex-direction:column}
+.hero::before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;border:44px solid rgba(255,255,255,.22);right:-150px;bottom:40px}
+.hero::after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:rgba(11,11,12,.14);left:-60px;top:230px}
+.hero h2{font-size:25px;color:var(--ink);position:relative;z-index:1}
+.hero>p{font-size:13px;color:#4B3A00;margin-top:8px;position:relative;z-index:1;max-width:240px}
+.pcard{position:relative;z-index:1;margin-top:22px;background:#fff;border-radius:16px;padding:16px;box-shadow:0 18px 40px -20px rgba(80,50,0,.5)}
+.pcard .nm{font-weight:800;font-size:15px}
+.float{position:relative;z-index:1;margin-top:12px;align-self:flex-end;background:var(--ink);color:#fff;border-radius:14px;padding:12px 14px;font-size:12px;display:flex;gap:10px;align-items:center;box-shadow:0 14px 30px -14px rgba(0,0,0,.5)}
+.float b{color:var(--yel);font-size:18px}
+.quote{position:relative;z-index:1;margin-top:auto;background:rgba(11,11,12,.82);color:#fff;border-radius:14px;padding:14px 16px;font-weight:700;font-size:14px;line-height:1.35}
+.quote span{color:var(--yel);font-size:24px;line-height:0;vertical-align:-8px;margin-right:4px}
+.stepper{display:flex;gap:8px;margin:6px 0 20px}
+.stepper .s{flex:1}
+.stepper .s i{display:block;height:5px;border-radius:999px;background:var(--line)}
+.stepper .s.on i{background:var(--blue)}
+.stepper .s span{display:block;font-size:11.5px;font-weight:700;color:var(--mut);margin-top:6px}
+.stepper .s.on span{color:var(--ink)}
+.rate{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line2)}
+.rate .dots{display:flex;gap:5px}
+.rate .dots button{width:30px;height:30px;border-radius:8px;background:var(--bg);font-weight:700;font-size:12px;color:var(--mut)}
+.rate .dots button.on{background:var(--blue);color:#fff}
+.range{width:100%;accent-color:var(--blue)}
+
+/* ---------- Diagnóstico ---------- */
+.ring{position:relative;width:96px;height:96px;flex:none}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:21px;font-weight:800}
+.li{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:13px;color:var(--ink2)}
+.li .d{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex:none}
+.li .d .ico{width:14px;height:14px}
+.routebox{border-radius:16px;background:var(--yel-50);border:1px solid #FBE3A0;padding:16px 18px;display:flex;gap:14px;align-items:center}
+.routebox .rk{width:52px;height:52px;border-radius:14px;background:#fff;display:grid;place-items:center;flex:none;color:var(--yel-d)}
+.bar-row{display:grid;grid-template-columns:160px 1fr 44px;gap:12px;align-items:center;padding:8px 0}
+.bar-row .track{height:10px;background:var(--line2);border-radius:999px;position:relative}
+.bar-row .track i{position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:var(--blue)}
+.bar-row .track u{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink);border-radius:2px}
+.st{display:inline-flex;align-items:center;gap:5px;font-weight:700;font-size:12px;white-space:nowrap}
+.st.ok{color:var(--green)}.st.warn{color:#B76E00}.st.no{color:var(--red)}.st.info{color:var(--blue)}
+.st .ico{width:14px;height:14px;stroke-width:2.4}
+.why li{list-style:none;display:flex;gap:9px;font-size:13px;color:var(--ink2);padding:6px 0}
+.why li .ico{color:var(--green);margin-top:2px;width:15px;height:15px;stroke-width:2.4}
+
+/* ---------- Journey (7 pasos) ---------- */
+.journey{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}
+.jphase{grid-column:span 3;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:6px 10px;border-radius:8px;text-align:center}
+.jstep{border:1px solid var(--line);border-radius:14px;padding:12px;background:#fff;text-align:left;display:flex;flex-direction:column;gap:6px;min-height:118px;transition:border-color .15s,transform .15s}
+.jstep:hover{border-color:var(--blue);transform:translateY(-2px)}
+.jstep .n{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:12px;background:var(--bg);color:var(--mut)}
+.jstep.done .n{background:var(--yel);color:var(--ink)}
+.jstep.cur{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-50)}
+.jstep.cur .n{background:var(--blue);color:#fff}
+.jstep b{font-size:13px}.jstep small{font-size:11.5px;color:var(--mut);line-height:1.35}
+
+/* ---------- Online ---------- */
+.welcome{border-radius:18px;background:linear-gradient(120deg,var(--blue-50),#fff 70%);border:1px solid var(--blue-100);padding:20px 22px;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.welcome h2{font-size:24px}
+.prog-card{margin-left:auto;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;width:280px}
+.rstep{display:flex;align-items:flex-start;gap:0;margin-top:6px}
+.rstep .s{flex:1;position:relative;text-align:left;padding-right:10px}
+.rstep .s .c{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:13px;background:var(--bg);color:var(--mut);border:2px solid var(--line);position:relative;z-index:1;background-clip:padding-box}
+.rstep .s.done .c{background:var(--yel);border-color:var(--yel);color:var(--ink)}
+.rstep .s.cur .c{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 0 0 4px var(--blue-50)}
+.rstep .s::after{content:"";position:absolute;left:38px;right:8px;top:17px;height:2px;background:var(--line)}
+.rstep .s.done::after{background:var(--yel)}
+.rstep .s:last-child::after{display:none}
+.rstep .s b{display:block;font-size:12.5px;margin-top:10px;line-height:1.3}
+.rstep .s small{font-size:11.5px;color:var(--mut)}
+.opps{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}
+.opp{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}
+.opp:hover{transform:translateY(-3px);box-shadow:var(--sh)}
+.opp .img{height:96px;position:relative;display:grid;place-items:center;color:rgba(255,255,255,.95);overflow:hidden}
+.opp .img::before{content:"";position:absolute;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.14);right:-40px;top:-50px}
+.opp .img::after{content:"";position:absolute;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.12);left:-20px;bottom:-40px}
+.opp .typ{position:absolute;top:8px;left:8px;background:rgba(11,11,12,.55);backdrop-filter:blur(4px);color:#fff;font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:6px;z-index:1}
+.opp .mt{position:absolute;top:8px;right:8px;background:#fff;color:var(--ink);font-size:10.5px;font-weight:800;padding:3px 7px;border-radius:6px;z-index:1}
+.opp .bd{padding:12px;display:flex;flex-direction:column;gap:6px;flex:1}
+.opp .bd b{font-size:13.5px;line-height:1.3}
+.opp .meta{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:11.5px;color:var(--mut)}
+.opp .meta span{display:inline-flex;gap:4px;align-items:center}
+.opp .meta .ico{width:12px;height:12px}
+.opp .btn{margin-top:auto}
+.mentor{display:flex;gap:12px;align-items:center;padding:12px;border-radius:12px;background:var(--soft);border:1px solid var(--line2)}
+.acc-item{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:10px;background:var(--soft);font-size:13px;font-weight:600;color:var(--ink2);width:100%;text-align:left}
+.acc-item:hover{background:var(--blue-50);color:var(--blue)}
+.slot{padding:9px 12px;border-radius:10px;border:1px solid var(--line);font-weight:700;font-size:12.5px;background:#fff}
+.slot:hover{border-color:var(--blue)}
+.slot.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.badge-t{border:1px solid var(--line);border-radius:16px;padding:16px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px}
+.badge-t .md{width:62px;height:62px;border-radius:50%;display:grid;place-items:center}
+.badge-t.lock{opacity:.45;filter:grayscale(1)}
+
+/* ---------- Empresa ---------- */
+.cand{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line2)}
+.cand:last-child{border-bottom:0}
+.cand .nm{font-weight:700;font-size:13.5px}
+.cand .sub{font-size:11.5px;color:var(--mut);line-height:1.35}
+.mring{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;position:relative}
+.mring::before{content:"";position:absolute;inset:5px;background:#fff;border-radius:50%}
+.mring b{position:relative;font-size:12px;font-weight:800}
+.mring small{position:absolute;bottom:-14px;font-size:10px;color:var(--mut);font-weight:600;left:50%;transform:translateX(-50%)}
+.kan{display:grid;grid-template-columns:repeat(4,minmax(220px,1fr));gap:14px;overflow-x:auto;padding-bottom:6px}
+.kcol{background:var(--soft);border:1px solid var(--line2);border-radius:14px;padding:12px;min-height:320px}
+.kcol h4{font-size:13px;display:flex;gap:8px;align-items:center;margin-bottom:10px}
+.kcard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:10px}
+
+/* ---------- KPI / charts ---------- */
+.kpi{border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;gap:12px;align-items:center;background:#fff}
+.kpi .v{font-size:23px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.kpi .l{font-size:12px;color:var(--ink2);line-height:1.3}
+.kpi .d{font-size:11.5px;font-weight:700;color:var(--green)}
+.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:16px}
+.filters .f{display:flex;flex-direction:column;gap:4px;font-size:11.5px;font-weight:700;color:var(--mut)}
+.filters .f select{min-width:140px;padding:8px 32px 8px 10px;font-size:13px;color:var(--ink);font-weight:600}
+.funnel{display:flex;align-items:flex-end;gap:10px;height:210px;padding-top:24px;border-bottom:1px solid var(--line)}
+.funnel .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;position:relative;cursor:default}
+.funnel .col i{width:100%;max-width:56px;border-radius:4px 4px 0 0;background:var(--blue);transition:height .5s;display:block}
+.funnel .col:hover i{background:var(--blue-d)}
+.funnel .col b{font-size:12px;font-weight:800;margin-bottom:5px}
+.funnel-l{display:flex;gap:10px;margin-top:8px}
+.funnel-l span{flex:1;text-align:center;font-size:11px;color:var(--ink2);font-weight:600;line-height:1.3}
+.funnel-l span small{display:block;color:var(--mut);font-weight:500}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--ink2);font-weight:600}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:14px;height:3px;border-radius:2px;display:inline-block}
+.hbar{display:grid;grid-template-columns:150px 1fr 70px;gap:10px;align-items:center;padding:7px 0;font-size:12.5px}
+.hbar .t{height:12px;border-radius:0 4px 4px 0;background:var(--line2);position:relative}
+.hbar .t i{position:absolute;left:0;top:0;bottom:0;border-radius:0 4px 4px 0}
+.hbar .vv{text-align:right;font-weight:700;color:var(--ink)}
+.alert{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line2);font-size:13px}
+.alert:last-child{border-bottom:0}
+.sev{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex:none}
+.sev .ico{width:15px;height:15px}
+#tip{position:fixed;pointer-events:none;background:var(--ink);color:#fff;font-size:12px;padding:8px 10px;border-radius:9px;z-index:100;opacity:0;transition:opacity .12s;max-width:240px;line-height:1.45;box-shadow:0 10px 24px -10px rgba(0,0,0,.4)}
+#tip b{color:var(--yel)}
+.chart svg text{font-family:inherit}
+
+/* ---------- Offers list ---------- */
+.offer{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line2)}
+.offer .th{width:64px;height:52px;border-radius:10px;display:grid;place-items:center;color:#fff}
+.offer b{font-size:14px}
+
+/* ---------- Chat ---------- */
+.chat{display:grid;grid-template-columns:260px minmax(0,1fr);border:1px solid var(--line);border-radius:16px;overflow:hidden;height:560px}
+.chat .list{border-right:1px solid var(--line);background:var(--soft);padding:10px}
+.chat .th{display:flex;gap:10px;align-items:center;padding:10px;border-radius:12px;width:100%;text-align:left}
+.chat .th.on{background:#fff;box-shadow:0 1px 3px rgba(11,11,12,.08)}
+.chat .conv{display:flex;flex-direction:column;min-width:0}
+.chat .msgs{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:10px;background:#fff}
+.bub{max-width:72%;padding:10px 13px;border-radius:14px;font-size:13.5px;background:var(--bg);align-self:flex-start;border-bottom-left-radius:4px}
+.bub.me{align-self:flex-end;background:var(--blue);color:#fff;border-bottom-left-radius:14px;border-bottom-right-radius:4px}
+.bub small{display:block;font-size:10.5px;opacity:.6;margin-top:3px}
+.composer{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)}
+.sugg{display:flex;gap:6px;flex-wrap:wrap;padding:0 12px 10px}
+
+/* ---------- Overlays ---------- */
+#modal{position:fixed;inset:0;background:rgba(11,11,12,.45);display:none;align-items:center;justify-content:center;z-index:80;padding:16px}
+#modal.on{display:flex}
+.mbox{background:#fff;border-radius:20px;width:min(560px,100%);max-height:calc(100vh - 32px);overflow-y:auto;box-shadow:0 30px 80px -20px rgba(0,0,0,.45);animation:pop .2s ease}
+.mbox .mh{display:flex;align-items:center;gap:12px;padding:18px 20px;border-bottom:1px solid var(--line)}
+.mbox .mh h3{font-size:17px}
+.mbox .mh .x{margin-left:auto}
+.mbox .mb{padding:20px}
+.mbox .mf{padding:14px 20px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;gap:8px}
+@keyframes pop{from{transform:translateY(10px) scale(.98);opacity:0}to{transform:none;opacity:1}}
+#toasts{position:fixed;bottom:20px;right:20px;display:flex;flex-direction:column;gap:8px;z-index:90}
+.toast{background:var(--ink);color:#fff;padding:12px 16px;border-radius:12px;font-size:13px;font-weight:600;display:flex;gap:10px;align-items:center;box-shadow:0 14px 30px -12px rgba(0,0,0,.4);animation:pop .25s ease;max-width:360px}
+.toast .ico{color:var(--yel)}
+#loader{position:fixed;inset:0;background:rgba(255,255,255,.92);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:95}
+#loader.on{display:flex}
+.ld{text-align:center;max-width:360px}
+.ld .orb{width:76px;height:76px;border-radius:50%;margin:0 auto 18px;background:conic-gradient(var(--blue),var(--yel),var(--blue));animation:spin 1.1s linear infinite;display:grid;place-items:center}
+.ld .orb::after{content:"";width:58px;height:58px;border-radius:50%;background:#fff}
+.ld li{list-style:none;font-size:13.5px;color:var(--mut);padding:5px 0;display:flex;gap:8px;justify-content:center;align-items:center;transition:color .2s}
+.ld li.ok{color:var(--ink);font-weight:600}
+.ld li .ico{color:var(--green);opacity:0}.ld li.ok .ico{opacity:1}
+@keyframes spin{to{transform:rotate(360deg)}}
+.fade{animation:fadein .25s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1180px){
+  .split{grid-template-columns:1fr}
+  .g5{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .journey{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .jphase{display:none}
+}
+@media (max-width:980px){
+  .top-title{display:none}
+  .app{grid-template-columns:1fr}
+  .side{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line);padding:8px}
+  .nav{width:auto;white-space:nowrap}
+  .side-foot{display:none}
+  .reg{grid-template-columns:1fr}
+  .hero{min-height:0}
+  .g4,.g3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .flow{margin-left:0}
+  .g[style*="grid-template-columns"]{grid-template-columns:minmax(0,1fr)!important}
+}
+@media (max-width:640px){
+  .top-in,.cap,.frame{padding-left:16px;padding-right:16px}
+  .top-in{flex-wrap:wrap;gap:8px}.tabs{width:100%;margin-left:0}
+  .main{padding:18px 16px}
+  .app-h{padding:10px 14px}.prod{display:none}.me span.nmx{display:none}
+  .g2,.g3,.g4,.g5,.fr{grid-template-columns:minmax(0,1fr)}
+  .journey{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cand{grid-template-columns:auto minmax(0,1fr) auto}.cand .acts{grid-column:1/-1;justify-content:flex-end}
+  .chat{grid-template-columns:1fr;height:auto}.chat .list{display:flex;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line)}.chat .msgs{height:380px}
+  .bar-row{grid-template-columns:110px 1fr 36px}
+  .hbar{grid-template-columns:110px 1fr 60px}
+  .rstep{flex-direction:column;gap:10px}.rstep .s{display:flex;gap:10px;align-items:center}.rstep .s::after{display:none}.rstep .s b{margin-top:0}
+  .prog-card{width:100%;margin-left:0}
+  .offer{grid-template-columns:48px minmax(0,1fr)}.offer .th{width:48px;height:44px}.offer .oa{grid-column:1/-1;justify-content:flex-end}
+}
+
+/* ---------- Brand ---------- */
+.brand{display:inline-flex;align-items:center;gap:6px;font-size:19px;letter-spacing:-.025em;color:var(--ink);white-space:nowrap;line-height:1}
+.brand .th{font-weight:600;color:var(--blue)}
+.brand .by{font-size:.68em;color:var(--mut);font-weight:500;letter-spacing:0;margin-top:.2em}
+.brand b{font-weight:800;color:var(--ink)}
+.brand .bspark{width:.95em;height:.95em;fill:var(--yel);stroke:none;flex:none}
+.brand.light .th,.brand.light b{color:#fff}.brand.light .by{color:rgba(255,255,255,.65)}
+.brand.xl{font-size:28px}
+/* ---------- Full-screen app ---------- */
+.app{min-height:100vh;border-radius:0;border:0;box-shadow:none}
+.app-h{position:sticky;top:0;z-index:30}
+.psw{margin-left:10px}
+.psw button{display:inline-flex;align-items:center;gap:6px}
+.umenu{position:absolute;top:46px;right:0;width:260px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--sh);padding:8px;z-index:20}
+.umenu .hd{padding:10px;border-bottom:1px solid var(--line);margin-bottom:6px;font-size:12.5px}
+.umenu .hd b{display:block;font-size:13.5px}
+.umenu button{display:flex;gap:10px;align-items:center;width:100%;padding:10px;border-radius:9px;font-weight:600;font-size:13px;color:var(--ink2);text-align:left}
+.umenu button:hover{background:var(--bg);color:var(--ink)}
+.umenu button.out{color:var(--red)}
+.secure{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;color:#0E7C3E;background:var(--green-50);padding:5px 10px;border-radius:999px}
+/* ---------- Login ---------- */
+.login{min-height:100vh;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);background:var(--bg)}
+.lg-art{background:radial-gradient(circle at 88% 12%,rgba(255,194,26,.38),transparent 38%),linear-gradient(160deg,#0B1533 0%,#1C1C1F 68%,#0B0B0C 100%);color:#fff;padding:40px 56px;display:flex;flex-direction:column;gap:30px;position:relative;overflow:hidden}
+.lg-art::before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;border:70px solid rgba(255,255,255,.05);right:-220px;bottom:-200px}
+.lg-art>*{position:relative}
+.lg-art h1{font-size:46px;line-height:1.04;letter-spacing:-.04em;max-width:540px;margin-top:auto}
+.lg-art h1 em{font-style:normal;color:var(--yel)}
+.lg-art>p{color:rgba(255,255,255,.78);font-size:15px;max-width:460px;margin-top:-14px}
+.lg-feat{display:grid;gap:12px;max-width:460px}
+.lg-feat div{display:flex;gap:12px;align-items:center;font-size:14px;font-weight:600}
+.lg-feat span{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.1);display:grid;place-items:center;color:var(--yel);flex:none}
+.lg-stats{display:flex;gap:34px;flex-wrap:wrap;padding-top:22px;border-top:1px solid rgba(255,255,255,.14);margin-top:auto}
+.lg-stats b{font-size:26px;display:block;letter-spacing:-.02em}
+.lg-stats small{color:rgba(255,255,255,.65);font-size:12px}
+.lg-form{display:flex;align-items:center;justify-content:center;padding:40px 24px}
+.lg-box{width:min(470px,100%)}
+.lg-box h2{font-size:26px}
+.roles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0 20px}
+.role{border:1.5px solid var(--line);border-radius:14px;padding:12px;text-align:left;background:#fff;display:flex;gap:10px;align-items:center;transition:border-color .15s,box-shadow .15s}
+.role:hover{border-color:var(--blue-100)}
+.role.on{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-50)}
+.role b{font-size:13.5px;display:block}.role small{font-size:11.5px;color:var(--mut);line-height:1.3;display:block}
+.pw{position:relative}.pw .inp{padding-right:44px}.pw button{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:8px;display:grid;place-items:center;color:var(--mut)}
+.lg-err{background:var(--red-50);color:#B42318;border-radius:10px;padding:10px 12px;font-size:12.5px;font-weight:600;display:flex;gap:8px;align-items:center;margin-bottom:14px}
+.lg-alt{display:flex;align-items:center;gap:10px;margin:18px 0;color:var(--mut);font-size:12px}
+.lg-alt::before,.lg-alt::after{content:"";flex:1;height:1px;background:var(--line)}
+.demo{margin-top:18px;border:1px dashed #C9D3E6;border-radius:12px;padding:12px 14px;font-size:12.5px;background:#fff;display:flex;gap:12px;align-items:center}
+.demo code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;color:var(--ink);background:var(--bg);padding:1px 6px;border-radius:5px}
+@media (max-width:980px){.login{grid-template-columns:minmax(0,1fr)}.lg-art{padding:28px 20px;gap:20px}.lg-art h1{font-size:32px;margin-top:8px}.lg-feat,.lg-stats{display:none}.psw{display:none}}
+@media (max-width:640px){.brand{font-size:16px}.brand.xl{font-size:22px}.secure{display:none}.roles{grid-template-columns:1fr 1fr}.role{flex-direction:column;align-items:flex-start}}
+
+/* ---------- Educamás palette: amarillo · gris · negro ---------- */
+body{background:var(--bg)}
+.inp:focus{border-color:var(--ink);box-shadow:0 0 0 3px rgba(253,195,0,.35)}
+.btn-p{background:var(--ink);color:#fff}.btn-p:hover{background:#2A2A2E}
+.btn-p .ico{color:var(--yel)}
+.btn-y{background:var(--yel);color:var(--ink)}.btn-y:hover{background:#F2B900}
+.btn-o:hover{border-color:var(--ink);color:var(--ink);background:var(--soft)}
+.btn-xl{box-shadow:0 10px 24px -12px rgba(11,11,12,.55)}
+.lnk{color:var(--ink);text-decoration:underline;text-decoration-color:var(--yel);text-decoration-thickness:2px;text-underline-offset:4px}
+.lnk:hover{text-decoration-color:var(--ink)}
+.nav.on{background:var(--ink);color:#fff}.nav.on .ico{color:var(--yel)}
+.nav:hover:not(.on){background:#fff}
+.side{background:#FAFAF8}
+.chip.on{background:var(--yel-50);border-color:var(--yel);color:var(--ink)}
+.chip.on .ico{color:var(--yel-d)}
+.tabsline button.on{background:var(--ink);color:#fff}
+.tabsline button.on .c{color:var(--yel);opacity:1}
+.seg button.on{color:var(--ink);box-shadow:0 1px 3px rgba(11,11,12,.14),inset 0 -2px 0 var(--yel)}
+.rate .dots button.on{background:var(--yel);color:var(--ink)}
+.stepper .s.on i{background:var(--yel)}
+.progress>i{background:var(--ink)}.progress.y>i{background:var(--yel)}
+.jstep:hover{border-color:var(--ink)}
+.jstep.cur{border-color:var(--ink);box-shadow:0 0 0 3px rgba(253,195,0,.35)}
+.jstep.cur .n{background:var(--ink);color:var(--yel)}
+.rstep .s.cur .c{background:var(--ink);border-color:var(--ink);color:var(--yel);box-shadow:0 0 0 4px rgba(253,195,0,.35)}
+.tag.b{background:#EEEEEA;color:var(--ink)}
+.tag.y{background:var(--yel-50);color:#7A5B00}
+.tag.p{background:var(--ink);color:#fff}
+.tag.t{background:#F0F0ED;color:var(--ink2)}
+.welcome{background:radial-gradient(circle at 92% 0%,rgba(253,195,0,.45),transparent 42%),linear-gradient(120deg,#0B0B0C,#232326);border:0;color:#fff}
+.welcome h2{color:#fff}.welcome .ink2,.welcome p{color:rgba(255,255,255,.72)}.welcome .muted{color:rgba(255,255,255,.55)}.welcome b{color:#fff}
+.welcome .prog-card b,.welcome .prog-card{color:var(--ink)}
+.welcome h2 .ico{color:var(--yel)}
+.funnel .col i{background:var(--yel)}.funnel .col:hover i{background:#E0A800}
+.mentor{background:var(--soft)}
+.acc-item:hover{background:var(--yel-50);color:var(--ink)}
+.slot.on{background:var(--ink);color:var(--yel);border-color:var(--ink)}
+.switch.on{background:var(--yel)}
+.kpi{transition:border-color .15s}.kpi:hover{border-color:#CFCFCA}
+.card{border-color:var(--line)}
+.icon-btn .dot{background:var(--yel);border-color:#fff}
+.nav .badge{background:var(--yel);color:var(--ink)}
+.opp .typ{background:rgba(11,11,12,.72)}
+.opp .mt{background:var(--yel);color:var(--ink)}
+.pop .icsq{background:var(--yel-50)!important;color:var(--ink)!important}
+.bub.me{background:var(--ink);color:#fff}
+.chat .th.on{box-shadow:inset 3px 0 0 var(--yel),0 1px 3px rgba(11,11,12,.08)}
+.toast{background:var(--ink)}
+.side-foot{background:var(--ink);color:rgba(255,255,255,.7)}.side-foot b{color:var(--yel)}
+/* brand */
+.brand .mk{width:1.35em;height:1.35em;border-radius:.38em;background:var(--yel);display:grid;place-items:center;flex:none;margin-right:2px}
+.brand .mk .bspark{width:.8em;height:.8em;fill:var(--ink)}
+.brand .th{color:var(--ink);font-weight:600}
+.brand b{color:var(--ink);font-weight:800}
+.brand.light .th,.brand.light b{color:#fff}
+.prod{border-left-color:var(--line)}
+/* login */
+.lg-art{background:radial-gradient(circle at 90% 8%,rgba(253,195,0,.55),transparent 36%),radial-gradient(circle at 0% 100%,rgba(253,195,0,.12),transparent 40%),linear-gradient(160deg,#0B0B0C 0%,#1A1A1D 60%,#2A2A2E 100%)}
+.lg-art::before{border-color:rgba(253,195,0,.08)}
+.lg-feat span{background:rgba(253,195,0,.12)}
+.role.on{border-color:var(--ink);box-shadow:0 0 0 3px rgba(253,195,0,.4)}
+.hero::after{background:rgba(11,11,12,.08)}
+
+/* ---------- Continuidad educativa y empleo ---------- */
+.goal{display:flex;gap:14px;align-items:center;flex-wrap:wrap;background:var(--yel-50);border:1px solid #F5E2A0;border-radius:16px;padding:14px 18px;margin-bottom:16px}
+.goal select{width:auto;min-width:210px;font-weight:700}
+.path{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.path .ptop{padding:18px 20px;display:flex;gap:14px;align-items:center}
+.path.edu .ptop{background:linear-gradient(120deg,#FDC300,#FFD84D);color:var(--ink)}
+.path.job .ptop{background:radial-gradient(circle at 95% 0,rgba(253,195,0,.45),transparent 45%),linear-gradient(120deg,#0B0B0C,#2A2A2E);color:#fff}
+.path .ptop h3{font-size:18px;margin:0}
+.path .ptop p{font-size:12.5px;opacity:.78}
+.path .pic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;flex:none}
+.path.edu .pic{background:var(--ink);color:var(--yel)}.path.job .pic{background:var(--yel);color:var(--ink)}
+.path .ready{margin-left:auto;text-align:right}
+.path .ready b{font-size:26px;display:block;line-height:1;letter-spacing:-.02em}
+.path .ready small{font-size:11px;opacity:.75;font-weight:600}
+.path .pstats{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line)}
+.path .pstats div{padding:12px 16px;border-right:1px solid var(--line2)}
+.path .pstats div:last-child{border-right:0}
+.path .pstats b{font-size:18px;display:block}.path .pstats span{font-size:11.5px;color:var(--mut)}
+.path .pb{padding:16px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+.path h4{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:6px 0 4px}
+.mini{display:grid;grid-template-columns:42px minmax(0,1fr) auto;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line2)}
+.mini .th{width:42px;height:42px;border-radius:11px;display:grid;place-items:center}
+.mini b{font-size:13px;display:block;line-height:1.3}.mini small{font-size:11.5px;color:var(--mut)}
+.app-it{border:1px solid var(--line);border-radius:12px;padding:12px;margin-top:6px}
+.trk{display:flex;gap:6px;margin-top:10px}
+.trk span{flex:1;font-size:10.5px;font-weight:700;color:var(--mut);display:flex;flex-direction:column;gap:5px}
+.trk i{display:block;height:5px;border-radius:999px;background:var(--line)}
+.trk span.done i{background:var(--yel)}.trk span.done{color:var(--ink2)}
+.trk span.cur i{background:var(--ink)}.trk span.cur{color:var(--ink)}
+.follow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.follow .fp{border:1px solid var(--line);border-radius:14px;padding:14px}
+.follow .fp.done{background:var(--yel-50);border-color:#F5E2A0}
+.follow .fp.cur{border-color:var(--ink);box-shadow:0 0 0 3px rgba(253,195,0,.35)}
+.stackbar{display:flex;height:18px;border-radius:6px;overflow:hidden;gap:2px;margin:10px 0 8px}
+.stackbar i{display:block;height:100%}
+@media (max-width:640px){.follow{grid-template-columns:1fr}.path .pstats{grid-template-columns:1fr 1fr 1fr}}
+</style>
+</head><body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></symbol>
+  <symbol id="i-clip" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 3h6v3H9z"/><path d="M9 13l2 2 4-4"/></symbol>
+  <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h8a3 3 0 000-6H8a3 3 0 010-6h8"/></symbol>
+  <symbol id="i-brief" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2"/><path d="M3 13h18"/></symbol>
+  <symbol id="i-msg" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0112 0v5l2 2H4z"/><path d="M10 21a2 2 0 004 0"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19V5a2 2 0 012-2h13v16H6a2 2 0 00-2 2 2 2 0 002 2h13"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.5 3-6 6.5-6s6.5 2.5 6.5 6"/><path d="M16 4.5a3.5 3.5 0 010 7M18 14c2 .6 3.5 2.8 3.5 6"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 4v16h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1L7 17M17 7l2.1-2.1"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 7h.01M15 7h.01M9 11h.01M15 11h.01M9 15h.01M15 15h.01M10 21v-3h4v3"/></symbol>
+  <symbol id="i-grad" viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/><path d="M22 9v6"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></symbol>
+  <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M14 4c3 0 6 3 6 6-2 4-6 7-8 8l-6-6c1-2 4-6 8-8z"/><circle cx="14.5" cy="9.5" r="1.6"/><path d="M6 12l-3 1 3 3M12 18l-1 3-3-3"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6 7-12a7 7 0 00-14 0c0 6 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-8-5-8-11a4.5 4.5 0 018-2.8A4.5 4.5 0 0120 9c0 6-8 11-8 11z"/></symbol>
+  <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></symbol>
+  <symbol id="i-laptop" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></symbol>
+  <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2 9a15 15 0 0120 0M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0"/><path d="M12 19.5h.01"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/></symbol>
+  <symbol id="i-dots" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M4 12l16-8-6 16-2-7z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-percent" viewBox="0 0 24 24"><path d="M19 5L5 19"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 6-14 15-14 0 9-6 15-14 15"/><path d="M5 19l7-7"/></symbol>
+  <symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 100 18c1 0 1.5-.8 1.5-1.6 0-1.2-1-1.4-1-2.4 0-.9.7-1.5 1.6-1.5H17a4 4 0 004-4c0-4.7-4-8.5-9-8.5z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="15" cy="7" r="1"/></symbol>
+  <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M3 12h4l2-5 4 10 2-5h6"/></symbol>
+  <symbol id="i-thumb" viewBox="0 0 24 24"><path d="M7 11v9H4v-9zM7 11l4-8a2 2 0 012 2v4h6a2 2 0 012 2l-2 7a2 2 0 01-2 2H7"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></symbol>
+</svg>
+
+<div id="app"></div>
+<div id="modal" onclick="if(event.target===this)closeModal()"></div>
+<div id="toasts"></div>
+<div id="tip"></div>
+<div id="loader"><div class="ld"><div class="orb"></div><h3 style="font-size:18px;margin-bottom:10px">Analizando tu perfil</h3><ul id="ldl"></ul></div></div>
+
+<script>
+/* =========================================================
+   Helpers
+   ========================================================= */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ic=(n,c='')=>`<svg class="ico ${c}" aria-hidden="true"><use href="#i-${n}"/></svg>`;
+const fmt=n=>Math.round(n).toLocaleString('es-CO');
+const initials=n=>String(n).split(' ').filter(Boolean).slice(0,2).map(w=>w[0]).join('').toUpperCase();
+const AVC=[['#FFE27A','#FDC300','#0B0B0C'],['#3A3A3E','#0B0B0C','#FDC300'],['#A3A3A8','#5A5A60','#fff'],['#FFD84D','#E0A800','#0B0B0C'],['#6B6B70','#2B2B2F','#fff'],['#2B2B2F','#0B0B0C','#fff']];
+function avatar(name,size=36){let h=0;for(const c of String(name))h=(h*31+c.charCodeAt(0))>>>0;const[a,b,f]=AVC[h%AVC.length];return `<span class="av" style="width:${size}px;height:${size}px;font-size:${Math.round(size*.38)}px;color:${f};background:linear-gradient(135deg,${a},${b})">${esc(initials(name))}</span>`}
+const firstNames=n=>String(n).split(' ').slice(0,2).join(' ');
+function toast(msg,icon='check'){const t=document.createElement('div');t.className='toast';t.innerHTML=ic(icon)+`<span>${msg}</span>`;$('#toasts').appendChild(t);setTimeout(()=>{t.style.opacity='0';t.style.transition='opacity .3s'},2800);setTimeout(()=>t.remove(),3200)}
+function modal(title,body,foot='',icon=''){$('#modal').innerHTML=`<div class="mbox" role="dialog" aria-modal="true"><div class="mh">${icon}<h3>${title}</h3><button class="icon-btn x" onclick="closeModal()" aria-label="Cerrar">${ic('x')}</button></div><div class="mb">${body}</div>${foot?`<div class="mf">${foot}</div>`:''}</div>`;$('#modal').classList.add('on')}
+function closeModal(){$('#modal').classList.remove('on')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+document.addEventListener('click',e=>{if((S.um||S.pop)&&!e.target.closest('.right')){S.um=false;S.pop=false;render()}});
+/* tooltip */
+document.addEventListener('mousemove',e=>{const el=e.target.closest&&e.target.closest('[data-tip]');const tip=$('#tip');if(!el){tip.style.opacity=0;return}tip.innerHTML=el.dataset.tip;tip.style.opacity=1;const w=tip.offsetWidth;let x=e.clientX+14;if(x+w>innerWidth-8)x=e.clientX-w-14;tip.style.left=x+'px';tip.style.top=(e.clientY+14)+'px'});
+
+/* =========================================================
+   Domain data
+   ========================================================= */
+const ROUTES={
+  A:{name:'Formación intensiva',color:'#B88A00',bg:'#FFF7D6',desc:'Tienes brechas por cerrar y las condiciones para formarte ahora.',cond:'Brechas en habilidades con conectividad, dispositivo y tiempo adecuados.',
+     steps:[['Habilidades digitales','Curso corto','laptop'],['Inglés para oportunidades','Curso corto','globe'],['Práctica profesional','Oportunidad','brief'],['Programa universitario','Opción de beca','grad']]},
+  B:{name:'Preparación y nivelación',color:'#0B0B0C',bg:'#ECECE9',desc:'Primero nivelamos bases y resolvemos barreras de acceso.',cond:'Nivel digital bajo o dos o más barreras remediables.',
+     steps:[['Bienestar y orientación','Acompañamiento','heart'],['Alfabetización digital','Curso corto','laptop'],['Habilidades para el trabajo','Curso corto','users'],['Práctica profesional','Oportunidad','brief']]},
+  C:{name:'Marketplace de aliados',color:'#6B6B70',bg:'#F1F1EE',desc:'Tu nivel es avanzado: te conectamos con formación especializada de aliados.',cond:'Nivel digital avanzado; necesita formación fuera del catálogo Educamás.',
+     steps:[['Orientación especializada','Mentoría','spark'],['Programa especializado','Aliado','grad'],['Certificación','Aliado','award'],['Vacantes afines','Conexión','brief']]},
+  D:{name:'Conexión directa',color:'#12893F',bg:'#E8F5EC',desc:'Estás listo para postularte: vamos directo al matching con empresas.',cond:'Perfil preparado, claridad vocacional alta y disponibilidad ≥ 20 h.',
+     steps:[['Hoja de vida con IA','Herramienta','file'],['Entrevista simulada','Mentoría','users'],['Matching con vacantes','Oportunidad','target'],['Vinculación','Empleo','award']]},
+  E:{name:'Información y referencia',color:'#9A9AA0',bg:'#F4F4F1',desc:'Hoy no estás en la población objetivo; te referimos a programas aliados.',cond:'Fuera de edad, estrato focalizado o sin consentimiento.',
+     steps:[['Información general','Recurso','book'],['Programas aliados','Referencia','users'],['Comunidad abierta','Recurso','globe'],['Nueva evaluación','En 6 meses','cal']]}
+};
+const INTERESTS=[['Tecnología','laptop'],['Educación','book'],['Salud','heart'],['Negocios','chart'],['Arte','palette'],['Medio ambiente','leaf']];
+const INT_ICON=Object.fromEntries(INTERESTS);
+const SKL={digital:'Habilidades digitales',analitico:'Pensamiento analítico',comunicacion:'Comunicación',equipo:'Trabajo en equipo',ingles:'Inglés'};
+const SKL_GAP={digital:'Manejo de datos y herramientas digitales',analitico:'Resolución de problemas',comunicacion:'Comunicación asertiva',equipo:'Gestión de proyectos en equipo',ingles:'Inglés'};
+const SKILLS=['Excel','Análisis de datos','SQL','Python','Power BI','Trabajo en equipo','Comunicación','Inglés','Atención al cliente','Diseño'];
+const CITIES=['Bogotá, D.C.','Medellín','Cali','Barranquilla','Bucaramanga','Cartagena'];
+const EDU=['Bachillerato incompleto','Bachiller','Técnico/Tecnólogo en curso','Técnico/Tecnólogo completo','Universitario en curso','Universitario completo'];
+const OT={
+  curso:{l:'Curso corto',g:'linear-gradient(135deg,#0B0B0C,#3A3A3E);color:#FDC300',i:'laptop',cta:'Ver curso',act:'Inscribirme'},
+  programa:{l:'Programa universitario',g:'linear-gradient(135deg,#FDC300,#FFB300);color:#0B0B0C',i:'grad',cta:'Ver programa',act:'Postularme'},
+  beca:{l:'Beca',g:'linear-gradient(135deg,#FFF1B3,#FFD84D);color:#0B0B0C',i:'award',cta:'Ver detalles',act:'Aplicar a la beca'},
+  descuento:{l:'Descuento',g:'linear-gradient(135deg,#E6E6E2,#C9C9C4);color:#0B0B0C',i:'percent',cta:'Ver descuento',act:'Usar descuento'},
+  vacante:{l:'Vacante',g:'linear-gradient(135deg,#1C1C1F,#4A4A4F);color:#fff',i:'brief',cta:'Ver vacante',act:'Postularme'},
+  mentoria:{l:'Mentoría',g:'linear-gradient(135deg,#6B6B70,#A3A3A8);color:#fff',i:'users',cta:'Agendar',act:'Agendar sesión'}
+};
+
+/* =========================================================
+   State
+   ========================================================= */
+let uid=100;
+const S={
+  view:'hub',
+  page:{hub:'registro',online:'inicio',empresa:'vacantes',uni:'cursos',equipo:'monitoreo'},
+  regStep:1,
+  p:{name:'María Fernanda López',email:'maria.lopez@correo.com',city:'Bogotá, D.C.',age:19,gender:'Mujer',edu:'Técnico/Tecnólogo en curso',estrato:2,connect:'Estable en casa',device:'Computador propio',hours:15,goal:'Estudiar y trabajar',consent:true,interests:['Tecnología','Educación'],sk:{digital:3,analitico:4,comunicacion:4,equipo:4,ingles:2},clarity:'Media'},
+  cfg:{ageMin:18,ageMax:28,estratoMax:3,womenGoal:70,digitalMin:2,hoursMin:8},
+  diag:null,diagTab:'resumen',
+  prog:[100,60,0,0],
+  oppFilter:'todos',oppQ:'',applied:{v2:'Postulada'},
+  mentorSlot:null,
+  chat:'mentora',
+  msgs:{
+    mentora:[['them','¡Hola María Fernanda! Soy Laura, tu mentora. Vi tu diagnóstico: tienes muy buena base en pensamiento analítico.','09:12'],['them','Esta semana te propongo terminar el módulo 2 de Habilidades digitales. ¿Agendamos una sesión?','09:13']],
+    ia:[['them','Hola, soy el asistente IA de Talent Hub. Puedo explicarte tu ruta, recomendarte cursos o ayudarte con tu hoja de vida.','Ahora']]
+  },
+  vac:{title:'Analista de Datos Jr.',skills:['Excel','Análisis de datos','SQL','Trabajo en equipo'],mod:'Híbrido',city:'Bogotá, D.C.',salary:'$1.800.000 - 2.200.000',sector:'Tecnología',practice:true,desc:'Apoyar la construcción de reportes y tableros para el área comercial.'},
+  vacancies:[
+    {id:1,title:'Auxiliar de Servicio al Cliente',skills:['Atención al cliente','Comunicación'],mod:'Presencial',city:'Bogotá, D.C.',apps:18,status:'Activa',practice:false},
+    {id:2,title:'Practicante de Talento Humano',skills:['Comunicación','Excel','Trabajo en equipo'],mod:'Híbrido',city:'Bogotá, D.C.',apps:32,status:'Activa',practice:true}
+  ],
+  pipe:{},
+  uni:[
+    {id:1,cat:'curso',title:'Desarrollo Web Full Stack',area:'Tecnología',mod:'En línea',dur:'8 semanas',apps:120,pub:true,tags:['Habilidades digitales'],routes:['A','C']},
+    {id:2,cat:'curso',title:'Gestión de Proyectos',area:'Negocios',mod:'Virtual',dur:'5 semanas',apps:64,pub:true,tags:['Liderazgo'],routes:['A','D']},
+    {id:3,cat:'curso',title:'Inglés para la Empleabilidad',area:'Educación',mod:'Virtual',dur:'8 semanas',apps:98,pub:true,tags:['Idiomas'],routes:['A','B']},
+    {id:4,cat:'curso',title:'Análisis de Datos con Python',area:'Tecnología',mod:'En línea',dur:'4 semanas',apps:143,pub:true,tags:['Datos'],routes:['A','C']},
+    {id:5,cat:'curso',title:'Excel para el trabajo',area:'Negocios',mod:'Virtual',dur:'3 semanas',apps:88,pub:true,tags:['Habilidades digitales'],routes:['A','B']},
+    {id:6,cat:'curso',title:'Marketing Digital Básico',area:'Negocios',mod:'Virtual',dur:'6 semanas',apps:57,pub:true,tags:['Emprendimiento'],routes:['A']},
+    {id:7,cat:'curso',title:'Pensamiento de Diseño',area:'Arte',mod:'Híbrido',dur:'4 semanas',apps:31,pub:true,tags:['Creatividad'],routes:['A','C']},
+    {id:8,cat:'curso',title:'Empleos Verdes y Sostenibilidad',area:'Medio ambiente',mod:'Virtual',dur:'5 semanas',apps:26,pub:true,tags:['Green skills'],routes:['A','B']},
+    {id:9,cat:'programa',title:'Ingeniería de Sistemas',area:'Tecnología',mod:'Presencial',dur:'8 semestres',apps:210,pub:true,tags:['Pregrado'],routes:['A','C']},
+    {id:10,cat:'programa',title:'Tecnología en Desarrollo de Software',area:'Tecnología',mod:'Híbrido',dur:'6 semestres',apps:176,pub:true,tags:['Tecnológico'],routes:['A','B']},
+    {id:11,cat:'programa',title:'Administración de Empresas',area:'Negocios',mod:'Presencial',dur:'8 semestres',apps:134,pub:true,tags:['Pregrado'],routes:['A']},
+    {id:12,cat:'programa',title:'Licenciatura en Educación Infantil',area:'Educación',mod:'Presencial',dur:'9 semestres',apps:88,pub:true,tags:['Pregrado'],routes:['A']},
+    {id:13,cat:'programa',title:'Enfermería',area:'Salud',mod:'Presencial',dur:'8 semestres',apps:152,pub:true,tags:['Pregrado'],routes:['A']},
+    {id:14,cat:'programa',title:'Gestión Ambiental',area:'Medio ambiente',mod:'Virtual',dur:'6 semestres',apps:47,pub:false,tags:['Tecnológico'],routes:['A','B']},
+    {id:15,cat:'beca',title:'Beca Jóvenes que Transforman',area:'Educación',mod:'Varios programas',dur:'Cobertura hasta 70%',apps:312,pub:true,tags:['Estratos 1-3'],routes:['A','B']},
+    {id:16,cat:'beca',title:'Beca Mujeres en STEM',area:'Tecnología',mod:'Ingenierías',dur:'Cobertura 100%',apps:198,pub:true,tags:['Mujeres'],routes:['A','C']},
+    {id:17,cat:'beca',title:'Beca Talento Regional',area:'Negocios',mod:'Todos los programas',dur:'Cobertura 50%',apps:141,pub:true,tags:['Regiones'],routes:['A','B','C']},
+    {id:18,cat:'descuento',title:'30% para egresados Educamás',area:'Educación',mod:'Pregrado y tecnológico',dur:'Primer semestre',apps:77,pub:true,tags:['Egresados'],routes:['A','C','D']},
+    {id:19,cat:'descuento',title:'20% en cursos de extensión',area:'Tecnología',mod:'Virtual',dur:'2026-2',apps:54,pub:true,tags:['Extensión'],routes:['A','B','C']}
+  ],
+  admis:[
+    {id:1,name:'Juan David Ramírez',offer:'Ingeniería de Sistemas',route:'A',state:'En revisión',date:'Hace 2 días'},
+    {id:2,name:'Valentina Morales',offer:'Beca Jóvenes que Transforman',route:'A',state:'Aprobada',date:'Hace 4 días'},
+    {id:3,name:'Camila Rojas',offer:'Pensamiento de Diseño',route:'B',state:'En revisión',date:'Hace 5 días'},
+    {id:4,name:'Sara Quintero',offer:'Beca Mujeres en STEM',route:'C',state:'Entrevista',date:'Hace 1 semana'}
+  ],
+  team:{terr:'Todos',aliado:'Todos',coh:'2026-1',ruta:'Todas'},
+  extra:{reg:0,diag:0,vinc:0},
+  yq:'',yr:'Todas',
+  alerts:[
+    {id:1,sev:'r',t:'120 jóvenes inactivos (7 días)',d:'Ruta A y B · Bogotá y Cali',done:false},
+    {id:2,sev:'y',t:'52 postulaciones sin respuesta',d:'Empresas con más de 5 días sin gestión',done:false},
+    {id:3,sev:'y',t:'3 aliados con baja actividad',d:'Sin nuevas ofertas en 30 días',done:false},
+    {id:4,sev:'b',t:'Meta de mujeres: 72% (meta 70%)',d:'Cohorte 2026-1 va por buen camino',done:false}
+  ],
+  likes:{},
+  pop:false
+};
+
+const POOL=[
+  {id:'jd',name:'Juan David Ramírez',edu:'Est. Análisis de Datos',inst:'SENA',city:'Bogotá, D.C.',route:'A',skills:['Excel','SQL','Análisis de datos','Power BI'],mod:['Híbrido','Presencial'],emp:81,hours:25},
+  {id:'vm',name:'Valentina Morales',edu:'Est. Administración',inst:'Universidad Nacional',city:'Bogotá, D.C.',route:'A',skills:['Excel','Trabajo en equipo','Comunicación','Inglés'],mod:['Híbrido','Remoto'],emp:74,hours:20},
+  {id:'ac',name:'Andrés Castro',edu:'Est. Ingeniería Industrial',inst:'Universidad Javeriana',city:'Bogotá, D.C.',route:'C',skills:['Excel','Python','Análisis de datos'],mod:['Presencial','Híbrido'],emp:78,hours:20},
+  {id:'sq',name:'Sara Quintero',edu:'Est. Estadística',inst:'Universidad de Antioquia',city:'Medellín',route:'D',skills:['Python','SQL','Análisis de datos','Inglés','Power BI'],mod:['Remoto','Híbrido'],emp:89,hours:30},
+  {id:'lm',name:'Laura Méndez',edu:'Téc. Gestión Empresarial',inst:'Uniminuto',city:'Bogotá, D.C.',route:'A',skills:['Atención al cliente','Comunicación','Excel'],mod:['Presencial'],emp:69,hours:30},
+  {id:'cr',name:'Camila Rojas',edu:'Bachiller',inst:'Talent Hub Cali',city:'Cali',route:'B',skills:['Diseño','Comunicación'],mod:['Remoto','Presencial'],emp:58,hours:12},
+  {id:'do',name:'Daniela Ortiz',edu:'Téc. Sistemas',inst:'SENA',city:'Barranquilla',route:'A',skills:['SQL','Python','Trabajo en equipo'],mod:['Remoto','Híbrido'],emp:72,hours:25},
+  {id:'ks',name:'Kevin Suárez',edu:'Est. Contaduría',inst:'Universidad Libre',city:'Bogotá, D.C.',route:'A',skills:['Excel','Power BI','Trabajo en equipo'],mod:['Híbrido'],emp:70,hours:20}
+];
+const STATIC_OPPS=[
+  {id:'e1',type:'curso',title:'Habilidades Digitales Esenciales',org:'Educamás Online',m1:'En línea',m2:'4 semanas',area:'Tecnología',routes:['A','B']},
+  {id:'e2',type:'mentoria',title:'Sesión de mentoría con profesional',org:'Mentores Educamás',m1:'1 hora',m2:'Virtual',area:'*',routes:['A','B','C','D']},
+  {id:'e3',type:'mentoria',title:'Prepara tu primera entrevista',org:'Mentores Educamás',m1:'45 min',m2:'Virtual',area:'*',routes:['A','D']},
+  {id:'e4',type:'vacante',title:'Auxiliar de Datos Comerciales',org:'Retail Andes',m1:'Remoto',m2:'Medellín',area:'Tecnología',routes:['C','D']},
+  {id:'e5',type:'curso',title:'Bienestar y proyecto de vida',org:'Educamás Online',m1:'En línea',m2:'3 semanas',area:'*',routes:['B']}
+];
+
+/* =========================================================
+   Diagnosis engine (16 variables → ruta A–E)
+   ========================================================= */
+function diagnose(){
+  const p=S.p,c=S.cfg,sk=p.sk;
+  const vals=Object.values(sk),avg=vals.reduce((a,b)=>a+b,0)/vals.length;
+  const barriers=[];
+  if(p.connect==='Sin conexión estable')barriers.push(['wifi','Conectividad','Sin conexión estable a internet','Bono de datos y puntos de conexión aliados']);
+  if(p.connect==='Solo datos móviles')barriers.push(['wifi','Conectividad','Depende de datos móviles','Contenidos descargables y bono de datos']);
+  if(p.device==='Solo celular'||p.device==='Compartido / ninguno')barriers.push(['laptop','Dispositivo','No cuenta con computador propio','Préstamo de equipo o sede aliada']);
+  if(+p.hours<c.hoursMin)barriers.push(['clock','Disponibilidad',`Menos de ${c.hoursMin} h/semana disponibles`,'Ruta flexible con módulos cortos']);
+  let route,why;
+  if(!p.consent){route='E';why=['No autorizó el tratamiento de datos personales (requisito obligatorio).']}
+  else if(+p.age<c.ageMin||+p.age>c.ageMax){route='E';why=[`Edad (${p.age}) fuera del rango focalizado ${c.ageMin}–${c.ageMax} años.`]}
+  else if(+p.estrato>c.estratoMax){route='E';why=[`Estrato ${p.estrato} por encima del máximo focalizado (${c.estratoMax}).`]}
+  else if(sk.digital<c.digitalMin||barriers.length>=2||p.edu==='Bachillerato incompleto'){route='B';why=[sk.digital<c.digitalMin?`Nivel digital (${sk.digital}/5) por debajo del mínimo (${c.digitalMin}).`:null,barriers.length>=2?`${barriers.length} barreras de acceso remediables.`:null,p.edu==='Bachillerato incompleto'?'Requiere nivelación académica básica.':null,'Te acompañamos primero con nivelación y bienestar.'].filter(Boolean)}
+  else if(sk.digital>=4&&avg>=3.8&&p.clarity==='Alta'&&+p.hours>=20){route='D';why=['Competencias digitales y socioemocionales sólidas.','Claridad vocacional alta.',`Disponibilidad de ${p.hours} h/semana para vincularte ya.`]}
+  else if(sk.digital>=4&&p.clarity!=='Baja'){route='C';why=['Tu nivel digital es avanzado.','Necesitas formación especializada de aliados del marketplace.']}
+  else{route='A';why=['Cumples los criterios de población objetivo.',`Tus brechas en ${lowest(sk,2).map(k=>SKL[k].toLowerCase()).join(' e ')} se cierran con cursos cortos.`,'Tu conectividad, dispositivo y tiempo permiten formación intensiva.']}
+  const eduBonus=['Técnico/Tecnólogo en curso','Universitario en curso','Técnico/Tecnólogo completo','Universitario completo'].includes(p.edu)?6:0;
+  const score=Math.round(Math.min(96,Math.max(18,avg/5*66+(p.clarity==='Alta'?12:p.clarity==='Media'?8:2)+(+p.hours>=20?8:+p.hours>=10?6:2)-barriers.length*6+eduBonus)));
+  const strengths=Object.keys(sk).filter(k=>sk[k]>=3).sort((a,b)=>sk[b]-sk[a]).slice(0,3);
+  const gaps=lowest(sk,3).filter(k=>sk[k]<=3);
+  const skills=[];
+  if(sk.digital>=3)skills.push('Excel');if(sk.analitico>=3)skills.push('Análisis de datos');if(sk.digital>=4)skills.push('SQL');
+  if(sk.digital>=4&&p.interests.includes('Tecnología'))skills.push('Python');if(sk.ingles>=3)skills.push('Inglés');
+  if(sk.comunicacion>=3)skills.push('Comunicación');if(sk.equipo>=3)skills.push('Trabajo en equipo');if(p.interests.includes('Arte'))skills.push('Diseño');
+  return{route,why,score,barriers,avg,strengths,gaps,skills};
+}
+function lowest(sk,n){return Object.keys(sk).sort((a,b)=>sk[a]-sk[b]).slice(0,n)}
+S.diag=diagnose();
+S.admis.push({id:5,name:S.p.name,offer:'Beca Mujeres en STEM',route:'A',state:'En revisión',date:'Hace 3 días'});
+
+/* derived */
+function progressPct(){return Math.round(S.prog.reduce((a,b)=>a+b,0)/4)}
+function curStep(){const i=S.prog.findIndex(v=>v<100);return i<0?4:i}
+function allOpps(){
+  const uni=S.uni.filter(o=>o.pub).map(o=>({id:'u'+o.id,type:o.cat,title:o.title,org:'Universidad del Bosque',m1:o.mod,m2:o.dur,area:o.area,routes:o.routes,src:o}));
+  const vac=S.vacancies.filter(v=>v.status==='Activa').map(v=>({id:'v'+v.id,type:'vacante',title:v.title,org:'Empresa Andina',m1:v.mod,m2:v.city,area:'Tecnología',routes:['A','C','D'],skills:v.skills,src:v}));
+  return[...STATIC_OPPS,...uni,...vac].map(o=>({...o,match:oppMatch(o)})).sort((a,b)=>b.match-a.match);
+}
+function oppMatch(o){let m=58;if(o.area==='*'||S.p.interests.includes(o.area))m+=18;if(o.routes.includes(S.diag.route))m+=14;if(o.skills)m+=Math.round(8*o.skills.filter(s=>S.diag.skills.includes(s)).length/o.skills.length);return Math.min(98,m+(o.title.length%5))}
+function me(){return{id:'me',name:S.p.name,edu:S.p.edu==='Técnico/Tecnólogo en curso'?'Est. Tecnología en Sistemas':S.p.edu,inst:'Talent Hub · Educamás',city:S.p.city,route:S.diag.route,skills:S.diag.skills,mod:['Híbrido','Remoto'],emp:S.diag.score,hours:S.p.hours,live:true}}
+function candMatch(c,v=S.vac){const R=v.skills;if(!R.length)return 55+c.skills.length*3;const hit=c.skills.filter(s=>R.includes(s)).length;let m=52+Math.round(38*hit/R.length);if(c.city===v.city)m+=4;if(c.mod.includes(v.mod))m+=3;if(v.practice&&['A','D'].includes(c.route))m+=2;return Math.min(97,m)}
+function shortlist(v=S.vac){return[me(),...POOL].filter(c=>c.route!=='E').map(c=>({...c,m:candMatch(c,v)})).sort((a,b)=>b.m-a.m).slice(0,5)}
+
+/* =========================================================
+   Shell
+   ========================================================= */
+const VIEWS=[
+  {k:'hub',n:1,tab:'Joven · Talent Hub',title:'Vista joven',sub:'Talent Hub',desc:'Registro, diagnóstico y ruta personalizada de acuerdo a sus intereses y contexto.',prod:'Talent Hub',pc:'var(--yel)',pi:'spark',phase:0},
+  {k:'online',n:2,tab:'Joven · Educamás Online',title:'Vista joven',sub:'Educamás Online',desc:'Formación, oportunidades y acompañamiento personalizado según su diagnóstico.',prod:'Educamás Online',pc:'var(--blue)',pi:'book',phase:1},
+  {k:'empresa',n:3,tab:'Empresa',title:'Vista empresa',sub:'',desc:'Creación de vacantes y conexión con talento calificado.',prod:'Empresas',pc:'var(--yel)',pi:'building',phase:2},
+  {k:'uni',n:4,tab:'Universidad',title:'Vista universidad',sub:'',desc:'Gestión de oferta académica y becas para los jóvenes.',prod:'Universidades',pc:'var(--purple)',pi:'grad',phase:2},
+  {k:'equipo',n:5,tab:'Equipo Educamás',title:'Vista equipo Educamás',sub:'',desc:'Monitoreo integral del ecosistema y gestión de impacto.',prod:'Equipo Educamás',pc:'var(--yel)',pi:'chart',phase:3}
+];
+const NAV={
+  hub:[['inicio','Inicio','home'],['registro','Registro','user'],['diagnostico','Mi diagnóstico','clip'],['rutas','Mis rutas','route'],['conexion','Estudio y empleo','target'],['oportunidades','Oportunidades','star'],['mensajes','Mensajes','msg',2]],
+  online:[['inicio','Inicio','home'],['ruta','Mi ruta','route'],['formacion','Formación','book'],['oportunidades','Oportunidades','star'],['conexion','Estudio y empleo','target'],['mentoria','Mentoría','users'],['comunidad','Comunidad','globe'],['logros','Mis logros','award']],
+  empresa:[['inicio','Inicio','home'],['vacantes','Vacantes','brief'],['candidatos','Candidatos','users'],['reportes','Reportes','chart'],['perfil','Mi empresa','building']],
+  uni:[['inicio','Inicio','home'],['programas','Programas','grad'],['cursos','Cursos cortos','laptop'],['becas','Becas','award'],['descuentos','Descuentos','percent'],['admisiones','Admisiones','file'],['reportes','Reportes','chart']],
+  equipo:[['inicio','Inicio','home'],['monitoreo','Monitoreo','chart'],['jovenes','Jóvenes','users'],['aliados','Aliados','building'],['alertas','Alertas','alert'],['reportes','Reportes','file'],['config','Configuración','gear']]
+};
+const WHO={empresa:'Empresa Andina',uni:'Universidad del Bosque',equipo:'Equipo Educamás'};
+const NOTIS={
+  hub:[['spark','Tu diagnóstico está listo','Ruta recomendada disponible'],['msg','Laura Gómez te escribió','Mentora asignada'],['star','3 oportunidades nuevas','Según tus intereses']],
+  online:[['book','Nuevo módulo disponible','Habilidades digitales · Módulo 3'],['cal','Sesión de orientación','Jueves 4:00 p. m.'],['brief','Nueva vacante con 92% de match','Empresa Andina']],
+  empresa:[['users','5 candidatos nuevos en tu shortlist','Analista de Datos Jr.'],['check','Valentina aceptó entrevista','Mañana 10:00 a. m.']],
+  uni:[['file','4 nuevas postulaciones','Beca Jóvenes que Transforman'],['eye','Tu curso tiene 1.240 vistas','Análisis de Datos con Python']],
+  equipo:[['alert','120 jóvenes inactivos','Revisar alertas'],['building','Nuevo aliado: Retail Andes','Empresa'],['chart','Reporte mensual listo','Junio 2026']]
+};
+
+const SPARK='<svg class="bspark" viewBox="0 0 24 24"><path d="M12 1l2.6 8.4L23 12l-8.4 2.6L12 23l-2.6-8.4L1 12l8.4-2.6z"/></svg>';
+function brand(c=''){return `<span class="brand ${c}"><span class="mk">${SPARK}</span><span class="th">Talent Hub</span><span class="by">by</span><b>Educamás</b></span>`}
+const ROLES={
+  joven:{l:'Joven',d:'Diagnóstico, ruta y formación',i:'user',bg:'var(--yel-50)',fg:'var(--yel-d)',views:['hub','online'],home:['hub','inicio'],email:'maria.lopez@correo.com',pass:'Joven2026',who:()=>S.p.name,mail:()=>S.p.email},
+  empresa:{l:'Empresa',d:'Vacantes y shortlist de talento',i:'building',bg:'var(--blue-50)',fg:'var(--blue)',views:['empresa'],home:['empresa','vacantes'],email:'talento@empresaandina.co',pass:'Empresa2026',who:()=>'Empresa Andina',mail:()=>'talento@empresaandina.co'},
+  uni:{l:'Universidad',d:'Oferta académica, becas y admisiones',i:'grad',bg:'var(--purple-50)',fg:'var(--purple)',views:['uni'],home:['uni','cursos'],email:'admisiones@unibosque.edu.co',pass:'Uni2026',who:()=>'Universidad del Bosque',mail:()=>'admisiones@unibosque.edu.co'},
+  equipo:{l:'Equipo Educamás',d:'Monitoreo integral del ecosistema',i:'chart',bg:'var(--teal-50)',fg:'var(--teal)',views:['equipo'],home:['equipo','monitoreo'],email:'equipo@educamas.org',pass:'Educamas2026',who:()=>'Equipo Educamás',mail:()=>'equipo@educamas.org'}
+};
+S.user=null;S.um=false;
+S.login={role:'joven',email:'',pass:'',err:'',show:false};
+S.requests=[{id:1,org:'Clínica Norte',type:'Empresa',email:'rrhh@clinicanorte.co',date:'Hace 1 día',state:'Pendiente'},{id:2,org:'Politécnico del Caribe',type:'Universidad',email:'extension@policaribe.edu.co',date:'Hace 3 días',state:'Pendiente'}];
+
+function allowed(v){return S.user&&ROLES[S.user.role].views.includes(v)}
+function go(v){if(!allowed(v)){toast('Acceso restringido: tu perfil no tiene permiso para esta sección','lock');return}S.view=v;S.pop=false;S.um=false;render();window.scrollTo({top:0,behavior:'smooth'})}
+function nav(p,v=S.view){if(!allowed(v)){toast('Acceso restringido: tu perfil no tiene permiso para esta sección','lock');return}S.view=v;S.page[v]=p;S.pop=false;S.um=false;render();window.scrollTo({top:0,behavior:'smooth'})}
+function loginAs(role,silent){S.user={role};const[v,p]=ROLES[role].home;S.view=v;S.page[v]=p;S.login.pass='';S.login.err='';try{sessionStorage.setItem('th_role',role)}catch(e){}render();window.scrollTo(0,0);if(!silent)toast(`Bienvenido · Portal ${ROLES[role].l}`,'shield')}
+function doLogin(){const L=S.login,R=ROLES[L.role];const em=L.email.trim().toLowerCase();
+  if(!em||!L.pass){L.err='Escribe tu correo y tu contraseña.';render();return}
+  const owner=Object.keys(ROLES).find(k=>ROLES[k].email===em);
+  if(owner&&owner!==L.role&&ROLES[owner].pass===L.pass){L.err=`Esta cuenta no tiene acceso al portal de ${R.l}. Ingresa como ${ROLES[owner].l}.`;render();return}
+  if(em!==R.email||L.pass!==R.pass){L.err='Correo o contraseña incorrectos. Revisa los datos o usa el acceso de demostración.';render();return}
+  loginAs(L.role)}
+function logout(){S.user=null;S.um=false;S.pop=false;S.login.pass='';try{sessionStorage.removeItem('th_role')}catch(e){}render();toast('Sesión cerrada','lock')}
+function fillDemo(){const R=ROLES[S.login.role];S.login.email=R.email;S.login.pass=R.pass;S.login.err='';render()}
+function signupJoven(){S.p.name='';S.p.email='';S.p.interests=[];S.regStep=1;S.user={role:'joven'};S.view='hub';S.page.hub='registro';try{sessionStorage.setItem('th_role','joven')}catch(e){}render();toast('Crea tu perfil: son solo 3 pasos','user')}
+function requestAccess(){const t=S.login.role==='uni'?'Universidad':'Empresa';
+  modal('Solicitar acceso como aliado',`<p class="small ink2" style="margin-bottom:14px">El portal de aliados es restringido. El equipo Educamás verifica cada organización antes de activar su cuenta.</p>
+   <div class="field"><label>Tipo de aliado</label><select class="inp" id="rq_t">${['Empresa','Universidad','Organización'].map(o=>`<option ${o===t?'selected':''}>${o}</option>`).join('')}</select></div>
+   <div class="fr"><div class="field"><label>Organización</label><input class="inp" id="rq_o" placeholder="Nombre de la organización"></div><div class="field"><label>NIT</label><input class="inp" id="rq_n" placeholder="900.000.000-0"></div></div>
+   <div class="field"><label>Correo institucional</label><input class="inp" id="rq_e" type="email" placeholder="nombre@organizacion.co"></div>
+   <label class="check"><input type="checkbox" id="rq_c" checked>Acepto los términos de uso y la política de datos del programa.</label>`,
+   `<button class="btn btn-o" onclick="closeModal()">Cancelar</button><button class="btn btn-p" onclick="sendRequest()">Enviar solicitud</button>`,`<span class="icsq" style="background:var(--blue-50);color:var(--blue)">${ic('shield')}</span>`)}
+function sendRequest(){const o=$('#rq_o').value.trim(),e=$('#rq_e').value.trim();if(!o||!/\S+@\S+\.\S+/.test(e)){toast('Escribe la organización y un correo válido','alert');return}
+  S.requests.unshift({id:++uid,org:o,type:$('#rq_t').value,email:e,date:'Ahora',state:'Pendiente'});closeModal();toast('Solicitud enviada · el equipo Educamás la revisará en 48 horas','send')}
+
+function renderLogin(){
+  const L=S.login,R=ROLES[L.role];
+  $('#app').innerHTML=`<div class="login">
+   <section class="lg-art">${brand('light xl')}
+     <h1>Del diagnóstico <em>a tu futuro</em>.</h1>
+     <p>Una sola plataforma para jóvenes, empresas, universidades y el equipo Educamás. Cada perfil entra a su propio portal.</p>
+     <div class="lg-feat"><div><span>${ic('spark')}</span>Diagnóstico con IA y acompañamiento humano</div><div><span>${ic('book')}</span>Formación pertinente en Educamás Online</div><div><span>${ic('brief')}</span>Conexión con continuidad educativa y empleo</div></div>
+     <div class="lg-stats"><div><b class="num">12.548</b><small>jóvenes registrados</small></div><div><b class="num">128</b><small>aliados activos</small></div><div><b class="num">1.892</b><small>vinculaciones</small></div></div>
+   </section>
+   <section class="lg-form"><div class="lg-box fade">
+     <h2>Ingresa a tu cuenta</h2><p class="ink2 small" style="margin-top:4px">Elige tu perfil. El acceso es restringido: cada perfil solo ve su propio portal.</p>
+     <div class="roles">${Object.entries(ROLES).map(([k,r])=>`<button class="role ${L.role===k?'on':''}" onclick="S.login.role='${k}';S.login.err='';S.login.email='';S.login.pass='';render()"><span class="icsq" style="background:${r.bg};color:${r.fg}">${ic(r.i)}</span><span><b>${r.l}</b><small>${r.d}</small></span></button>`).join('')}</div>
+     ${L.err?`<div class="lg-err">${ic('alert','sm')}${esc(L.err)}</div>`:''}
+     <form onsubmit="event.preventDefault();doLogin()">
+       <div class="field"><label>Correo ${L.role==='joven'?'electrónico':'institucional'}</label><input class="inp" type="email" autocomplete="username" value="${esc(L.email)}" oninput="S.login.email=this.value" placeholder="${R.email}"></div>
+       <div class="field"><label>Contraseña</label><div class="pw"><input class="inp" id="lg_p" type="${L.show?'text':'password'}" autocomplete="current-password" value="${esc(L.pass)}" oninput="S.login.pass=this.value" placeholder="••••••••"><button type="button" onclick="S.login.show=!S.login.show;render()" aria-label="Mostrar contraseña">${ic('eye','sm')}</button></div></div>
+       <div class="row" style="justify-content:space-between;margin:-2px 0 16px"><label class="check" style="font-size:12.5px"><input type="checkbox" checked>Recordarme</label><button type="button" class="lnk" onclick="toast('Te enviamos un enlace para restablecer tu contraseña','send')">¿Olvidaste tu contraseña?</button></div>
+       <button class="btn btn-p btn-xl btn-block">${ic('lock','sm')} Ingresar como ${R.l}</button>
+     </form>
+     <div class="lg-alt">o</div>
+     ${L.role==='joven'?`<button class="btn btn-y btn-block" onclick="signupJoven()">Crear mi cuenta gratis ${ic('arrow','sm')}</button>`:L.role==='equipo'?`<p class="small muted" style="text-align:center">${ic('shield','sm')} Acceso solo para personal autorizado de Educamás.</p>`:`<button class="btn btn-o btn-block" onclick="requestAccess()">${ic('shield','sm')} ¿Tu organización aún no es aliada? Solicitar acceso</button>`}
+     <div class="demo">${ic('spark')}<div style="flex:1;min-width:0"><b>Acceso de demostración</b><br><code>${R.email}</code> · <code>${R.pass}</code></div><button class="btn btn-o btn-sm" onclick="fillDemo()">Autocompletar</button></div>
+     <p class="xs muted" style="text-align:center;margin-top:16px">${ic('lock','sm')} Conexión segura · Datos protegidos según la Ley 1581 de 2012</p>
+   </div></section></div>`;
+}
+
+function render(){
+  if(!S.user){renderLogin();return}
+  const role=ROLES[S.user.role];
+  if(!allowed(S.view)){S.view=role.home[0]}
+  const V=VIEWS.find(v=>v.k===S.view);
+  const who=role.who()||'Nuevo usuario';
+  const nv=NAV[S.view].map(([k,l,i,b])=>`<button class="nav ${S.page[S.view]===k?'on':''}" onclick="nav('${k}')">${ic(i)}${l}${b?`<span class="badge">${b}</span>`:''}</button>`).join('');
+  const foot={hub:['IA + acompañamiento humano','Tu mentora y el asistente IA te guían en cada paso.'],online:['Tu ruta: '+ROUTES[S.diag.route].name,`${progressPct()}% completado`],empresa:['Talento acompañado','Candidatos diagnosticados y formados por Educamás.'],uni:['Oferta visible','Tu oferta publicada aparece en Educamás Online.'],equipo:['Meta de mujeres',`${S.cfg.womenGoal}% · actual 72%`]}[S.view];
+  const product=S.user.role==='joven'
+    ?`<div class="seg psw"><button class="${S.view==='hub'?'on':''}" onclick="go('hub')">${ic('spark','sm')}Talent Hub</button><button class="${S.view==='online'?'on':''}" onclick="go('online')">${ic('book','sm')}Educamás Online</button></div>`
+    :`<span class="prod"><i style="background:${V.pc};color:${V.pc==='var(--yel)'?'var(--ink)':'#fff'}">${ic(V.pi)}</i>Portal ${V.prod}</span>`;
+  const profilePage={joven:"S.regStep=1;nav('registro','hub')",empresa:"nav('perfil')",uni:"nav('inicio')",equipo:"nav('config')"}[S.user.role];
+  $('#app').innerHTML=`<div class="app">
+   <div class="app-h">${brand()}${product}
+     <div class="right">${S.user.role!=='joven'?`<span class="secure">${ic('shield','sm')}Acceso restringido · ${role.l}</span>`:''}
+       <button class="icon-btn" onclick="S.pop=!S.pop;S.um=false;render()" aria-label="Notificaciones">${ic('bell')}<span class="dot"></span></button>
+       <button class="me" onclick="S.um=!S.um;S.pop=false;render()">${avatar(who,32)}<span class="nmx">${esc(S.user.role==='joven'?firstNames(who):who)}</span>${ic('chev','sm')}</button>
+       ${S.pop?`<div class="pop">${NOTIS[S.view].map(n=>`<div class="it"><span class="icsq" style="width:32px;height:32px;background:var(--blue-50);color:var(--blue)">${ic(n[0],'sm')}</span><div><b>${n[1]}</b><small>${n[2]}</small></div></div>`).join('')}</div>`:''}
+       ${S.um?`<div class="umenu"><div class="hd"><b>${esc(who)}</b><span class="muted">${esc(role.mail()||'')}</span><div style="margin-top:6px"><span class="tag" style="background:${role.bg};color:${role.fg}">Perfil ${role.l}</span></div></div>
+          <button onclick="${profilePage}">${ic('user','sm')}Mi perfil</button><button onclick="S.um=false;toast('Preferencias guardadas','gear');render()">${ic('gear','sm')}Configuración de la cuenta</button><button class="out" onclick="logout()">${ic('arrow','sm')}Cerrar sesión</button></div>`:''}
+     </div></div>
+   <aside class="side">${nv}<div class="side-foot"><b>${esc(foot[0])}</b>${esc(foot[1])}</div><button class="nav" style="margin-top:8px;color:var(--red)" onclick="logout()">${ic('arrow')}Cerrar sesión</button></aside>
+   <main class="main fade" id="main">${(PAGES[S.view][S.page[S.view]]||(()=>'<div class="empty">Próximamente</div>'))()}</main></div>`;
+}
+
+/* =========================================================
+   1 · TALENT HUB
+   ========================================================= */
+const PAGES={hub:{},online:{},empresa:{},uni:{},equipo:{}};
+
+PAGES.hub.inicio=()=>{
+  const d=S.diag,R=ROUTES[d.route];
+  const steps=[['Registro','Crea tu perfil','registro',0],['Diagnóstico','Habilidades, intereses y contexto','diagnostico',0],['Ruta personalizada','Tu camino A–E','rutas',0],['Formación pertinente','En Educamás Online','online:formacion',1],['Matching','Estudio y empleo con match','conexion',2],['Vinculación','Continuidad educativa o empleo','conexion',2],['Seguimiento','Acompañamiento 6 meses','conexion',2]];
+  const pct=progressPct();const cur=pct>=100?4:3;
+  return `<div class="welcome" style="margin-bottom:18px">
+    ${avatar(S.p.name,60)}<div><p class="muted small">Bienvenida de nuevo</p><h2>Hola, ${esc(firstNames(S.p.name))}</h2><p class="ink2">Vas en el paso ${cur+1} de 7. Tu ruta recomendada es <b>${d.route} · ${R.name}</b>.</p></div>
+    <div class="prog-card"><div class="row" style="justify-content:space-between"><b class="small">Tu recorrido</b><b class="num">${Math.round((cur+pct/100)/7*100)}%</b></div><div class="progress y" style="margin-top:8px"><i style="width:${Math.round((cur+pct/100)/7*100)}%"></i></div><button class="lnk" style="margin-top:8px" onclick="nav('diagnostico')">Ver mi diagnóstico ${ic('arrow','sm')}</button></div>
+  </div>
+  <div class="card" style="margin-bottom:18px"><h3>${ic('route')} ¿Cómo lo haremos? Tu ruta completa en 7 pasos</h3>
+    <div class="journey">
+      <div class="jphase" style="background:var(--yel-50);color:#9A6700">Diagnóstico y orientación · Talent Hub</div>
+      <div class="jphase" style="grid-column:span 1;background:var(--blue-50);color:var(--blue)">Formación · Online</div>
+      <div class="jphase" style="background:var(--ink);color:var(--yel)">Salidas positivas · Continuidad educativa y empleo</div>
+      ${steps.map((s,i)=>{const st=i<cur?'done':i===cur?'cur':'';const [v,p]=s[2].includes(':')?s[2].split(':'):['hub',s[2]];return `<button class="jstep ${st}" onclick="nav('${p}','${v}')"><span class="n">${i<cur?ic('check','sm'):i+1}</span><b>${s[0]}</b><small>${s[1]}</small></button>`}).join('')}
+    </div>
+    <p class="small muted" style="margin-top:12px">${ic('spark','sm')} IA + acompañamiento humano durante todo el recorrido.</p>
+  </div>
+  <div class="g g3">
+    <div class="card"><h3>${ic('clip')} Diagnóstico</h3><div class="row"><div class="ring" style="width:64px;height:64px">${ringSvg(d.score,'#FDC300',6)}<b style="font-size:15px">${d.score}%</b></div><div class="small ink2">Índice de empleabilidad<br><b class="num" style="color:var(--green)">+${Math.max(0,d.score-52)}% vs promedio</b></div></div></div>
+    <div class="card"><h3>${ic('route')} Ruta ${d.route}</h3><p class="small ink2">${R.desc}</p><button class="lnk" style="margin-top:8px" onclick="nav('rutas')">Ver por qué ${ic('arrow','sm')}</button></div>
+    <div class="card"><h3>${ic('msg')} Acompañamiento</h3><div class="row">${avatar('Laura Gómez',40)}<div class="small"><b>Laura Gómez</b><br><span class="muted">Mentora asignada · 2 mensajes</span></div></div><button class="lnk" style="margin-top:8px" onclick="nav('mensajes')">Abrir mensajes ${ic('arrow','sm')}</button></div>
+  </div>`;
+};
+
+PAGES.hub.registro=()=>{
+  const p=S.p,st=S.regStep;
+  const stepNames=['Datos personales','Contexto','Habilidades'];
+  let body='';
+  if(st===1)body=`
+    <div class="field"><label>Nombre completo</label><input class="inp" value="${esc(p.name)}" oninput="S.p.name=this.value;prev()" placeholder="Tu nombre y apellidos"></div>
+    <div class="field"><label>Correo electrónico</label><input class="inp" type="email" value="${esc(p.email)}" oninput="S.p.email=this.value" placeholder="nombre@correo.com"></div>
+    <div class="fr"><div class="field"><label>Ciudad</label><select class="inp" onchange="S.p.city=this.value;prev()">${CITIES.map(c=>`<option ${c===p.city?'selected':''}>${c}</option>`).join('')}</select></div>
+    <div class="field"><label>Edad</label><input class="inp" type="number" min="14" max="40" value="${p.age}" oninput="S.p.age=+this.value;prev()"></div></div>
+    <div class="field"><label>Género</label><div class="seg">${['Mujer','Hombre','No binario','Prefiero no decir'].map(g=>`<button class="${p.gender===g?'on':''}" onclick="S.p.gender='${g}';render()">${g}</button>`).join('')}</div></div>
+    <div class="field"><label>Intereses <small>(selecciona hasta 3)</small></label><div class="chips">${INTERESTS.map(([n,i])=>`<button class="chip ${p.interests.includes(n)?'on':''}" onclick="togInt('${n}')">${ic(i)}${n}</button>`).join('')}</div></div>`;
+  if(st===2)body=`
+    <div class="fr"><div class="field"><label>Nivel educativo</label><select class="inp" onchange="S.p.edu=this.value">${EDU.map(c=>`<option ${c===p.edu?'selected':''}>${c}</option>`).join('')}</select></div>
+    <div class="field"><label>Objetivo principal</label><select class="inp" onchange="S.p.goal=this.value">${['Conseguir empleo','Estudiar y trabajar','Ingresar a la universidad','Emprender'].map(c=>`<option ${c===p.goal?'selected':''}>${c}</option>`).join('')}</select></div></div>
+    <div class="field"><label>Estrato socioeconómico</label><div class="seg">${[1,2,3,4,5,6].map(e=>`<button class="${+p.estrato===e?'on':''}" onclick="S.p.estrato=${e};render()">${e}</button>`).join('')}</div></div>
+    <div class="fr"><div class="field"><label>Conectividad</label><select class="inp" onchange="S.p.connect=this.value">${['Estable en casa','Solo datos móviles','Sin conexión estable'].map(c=>`<option ${c===p.connect?'selected':''}>${c}</option>`).join('')}</select></div>
+    <div class="field"><label>Dispositivo</label><select class="inp" onchange="S.p.device=this.value">${['Computador propio','Solo celular','Compartido / ninguno'].map(c=>`<option ${c===p.device?'selected':''}>${c}</option>`).join('')}</select></div></div>
+    <div class="field"><label>Horas disponibles por semana: <span id="hv" style="color:var(--blue)">${p.hours} h</span></label><input class="range" type="range" min="0" max="40" step="1" value="${p.hours}" oninput="S.p.hours=+this.value;$('#hv').textContent=this.value+' h'"></div>`;
+  if(st===3)body=`
+    <p class="small ink2" style="margin-bottom:6px">¿Qué tan fuerte te sientes en cada habilidad? (1 = estoy empezando, 5 = la domino)</p>
+    ${Object.keys(SKL).map(k=>`<div class="rate"><span class="small" style="font-weight:600">${SKL[k]}</span><div class="dots">${[1,2,3,4,5].map(n=>`<button class="${p.sk[k]===n?'on':''}" onclick="S.p.sk.${k}=${n};render()" aria-label="${SKL[k]} ${n}">${n}</button>`).join('')}</div></div>`).join('')}
+    <div class="field" style="margin-top:14px"><label>¿Qué tan claro tienes lo que quieres hacer?</label><div class="seg">${['Baja','Media','Alta'].map(g=>`<button class="${p.clarity===g?'on':''}" onclick="S.p.clarity='${g}';render()">${g==='Baja'?'Aún no lo sé':g==='Media'?'Tengo ideas':'Lo tengo claro'}</button>`).join('')}</div></div>
+    <label class="check"><input type="checkbox" ${p.consent?'checked':''} onchange="S.p.consent=this.checked">Autorizo el tratamiento de mis datos personales para recibir orientación y oportunidades (Ley 1581 de 2012).</label>`;
+  return `<div class="reg">
+    <div class="hero"><h2>Crea tu perfil y descubre tu potencial</h2><p>Unos minutos para conocerte mejor y abrir nuevas oportunidades.</p>
+      <div class="pcard" id="prev"></div>
+      <div class="float">${ic('spark')}<div>Índice de empleabilidad<br><b id="prevScore">${S.diag.score}%</b></div></div>
+      <div class="quote"><span>“</span>El primer paso para un gran futuro empieza aquí</div>
+    </div>
+    <div class="card" style="padding:22px 24px">
+      <div class="row" style="justify-content:space-between"><h3 style="margin:0">Formulario de registro</h3><span class="small muted">Paso ${st} de 3</span></div>
+      <div class="stepper">${stepNames.map((n,i)=>`<div class="s ${i<st?'on':''}"><i></i><span>${n}</span></div>`).join('')}</div>
+      <div class="fade" key="${st}">${body}</div>
+      <div class="row" style="margin-top:20px;justify-content:space-between">
+        <button class="btn btn-o" onclick="regStep(-1)" ${st===1?'disabled style="opacity:.4;cursor:default"':''}>Atrás</button>
+        ${st<3?`<button class="btn btn-p" style="min-width:160px" onclick="regStep(1)">Siguiente ${ic('arrow','sm')}</button>`:`<button class="btn btn-p" style="min-width:200px" onclick="submitReg()">${ic('spark','sm')} Ver mi diagnóstico</button>`}
+      </div>
+    </div></div>`;
+};
+function prev(){const el=$('#prev');if(!el)return;const p=S.p;el.innerHTML=`<div class="row">${avatar(p.name||'?',46)}<div><div class="nm">${esc(p.name||'Tu nombre')}</div><div class="xs muted">${esc(p.city)} · ${esc(p.age)} años</div></div></div><hr class="sep" style="margin:12px 0"><div class="xs muted" style="font-weight:700;margin-bottom:6px">MIS INTERESES</div><div class="chips">${p.interests.map(i=>`<span class="tag b">${ic(INT_ICON[i],'sm')}${i}</span>`).join('')||'<span class="xs muted">Elige hasta 3</span>'}</div>`}
+function togInt(n){const a=S.p.interests;if(a.includes(n))a.splice(a.indexOf(n),1);else{if(a.length>=3){toast('Puedes elegir hasta 3 intereses','alert');return}a.push(n)}render()}
+function regStep(d){if(d>0&&S.regStep===1){if(!S.p.name.trim()||!/\S+@\S+\.\S+/.test(S.p.email)){toast('Completa tu nombre y un correo válido','alert');return}if(!S.p.interests.length){toast('Elige al menos un interés','alert');return}}S.regStep=Math.min(3,Math.max(1,S.regStep+d));render()}
+function submitReg(){
+  const L=$('#loader'),ul=$('#ldl');const items=['Revisando tus datos y contexto','Evaluando 16 variables de enrutamiento','Calculando índice de empleabilidad','Asignando tu ruta personalizada'];
+  ul.innerHTML=items.map(t=>`<li>${ic('check','sm')}${t}</li>`).join('');L.classList.add('on');
+  items.forEach((_,i)=>setTimeout(()=>ul.children[i].classList.add('ok'),350*(i+1)));
+  setTimeout(()=>{const old=S.diag.route;S.diag=diagnose();if(old!==S.diag.route)S.prog=[0,0,0,0];S.extra.reg++;S.extra.diag++;L.classList.remove('on');S.diagTab='resumen';nav('diagnostico');toast(`Tu ruta recomendada: ${S.diag.route} · ${ROUTES[S.diag.route].name}`,'spark')},1750);
+}
+function ringSvg(v,color,w=9){const r=40,c=2*Math.PI*r;return `<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="${r}" fill="none" stroke="#EEEEEA" stroke-width="${w}"/><circle cx="50" cy="50" r="${r}" fill="none" stroke="${color}" stroke-width="${w}" stroke-linecap="round" stroke-dasharray="${c*v/100} ${c}"/></svg>`}
+
+PAGES.hub.diagnostico=()=>{
+  const d=S.diag,p=S.p,R=ROUTES[d.route];
+  const tabs=[['resumen','Resumen'],['habilidades','Habilidades'],['brechas','Brechas'],['intereses','Intereses'],['contexto','Contexto'],['barreras','Barreras']];
+  let body='';
+  if(S.diagTab==='resumen')body=`
+    <div class="g" style="grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)">
+      <div class="card"><div class="xs muted" style="font-weight:700;margin-bottom:10px">TU PERFIL EN RESUMEN</div><div class="row">${avatar(p.name,64)}<div><b style="font-size:16px">${esc(p.name)}</b><div class="small muted">${esc(p.city)} · ${esc(p.age)} años · ${esc(p.edu)}</div><span class="tag ${d.score>=65?'gr':'y'}" style="margin-top:6px">${ic('shield','sm')}${d.score>=65?'Perfil con alto potencial':'Perfil en desarrollo'}</span></div></div></div>
+      <div class="card row" style="gap:16px"><div class="ring">${ringSvg(d.score,'#FDC300')}<b>${d.score}%</b></div><div><b>Índice de empleabilidad</b><div class="small" style="color:var(--green);font-weight:700;margin-top:4px">▲ +${Math.max(0,d.score-52)}% <span class="muted" style="font-weight:500">vs. promedio de la cohorte</span></div></div></div>
+    </div>
+    <div class="g g3" style="margin-top:16px">
+      <div class="card"><h3>Habilidades destacadas</h3>${d.strengths.map(k=>`<div class="li"><span class="d" style="background:var(--blue-50);color:var(--blue)">${ic('check')}</span>${SKL[k]}</div>`).join('')||'<p class="small muted">Aún estamos identificándolas.</p>'}</div>
+      <div class="card"><h3>Brechas por fortalecer</h3>${d.gaps.map(k=>`<div class="li"><span class="d" style="background:var(--red-50);color:var(--red)">${ic('target')}</span>${SKL_GAP[k]}</div>`).join('')||'<p class="small muted">Sin brechas críticas.</p>'}</div>
+      <div class="card"><h3>Tus intereses</h3>${p.interests.map(i=>`<div class="li"><span class="d" style="background:var(--yel-50);color:var(--ink)">${ic(INT_ICON[i])}</span>${i}</div>`).join('')}</div>
+    </div>
+    <div class="routebox" style="margin-top:16px;background:${R.bg};border-color:${R.color}33"><span class="rk" style="color:${R.color}">${ic('rocket','lg')}</span><div style="flex:1"><div class="row" style="justify-content:space-between"><b style="font-size:15px">Tu ruta recomendada · ${d.route}. ${R.name}</b><button class="lnk" onclick="nav('rutas')">Ver detalle ${ic('arrow','sm')}</button></div><p class="small ink2">${R.steps.map(s=>s[0]).join(' + ')}.</p></div></div>
+    <button class="btn btn-p btn-xl btn-block" style="margin-top:14px" onclick="toOnline()">Ir a Educamás Online ${ic('arrow')}</button>`;
+  if(S.diagTab==='habilidades')body=`<div class="card"><h3>Autoevaluación vs. promedio de la cohorte <span class="lnk" style="color:var(--mut)"><i style="width:2px;height:12px;background:var(--ink);display:inline-block"></i> promedio</span></h3>
+    ${Object.keys(SKL).map(k=>{const avg={digital:3,analitico:3,comunicacion:3.4,equipo:3.6,ingles:2.4}[k];return `<div class="bar-row"><span class="small" style="font-weight:600">${SKL[k]}</span><div class="track" data-tip="<b>${SKL[k]}</b><br>Tú: ${p.sk[k]}/5 · Promedio: ${avg}/5"><i style="width:${p.sk[k]*20}%;background:${p.sk[k]>=avg?'var(--blue)':'#8FA9F5'}"></i><u style="left:${avg*20}%"></u></div><b class="num small" style="text-align:right">${p.sk[k]}/5</b></div>`}).join('')}
+    <p class="small muted" style="margin-top:10px">${ic('spark','sm')} Tu mentora validará este resultado con una prueba práctica en tu primera sesión.</p></div>`;
+  if(S.diagTab==='brechas')body=`<div class="g g2">${(d.gaps.length?d.gaps:['ingles']).map(k=>{const o=allOpps().find(o=>o.type==='curso'&&(k==='ingles'?/Ingl/.test(o.title):k==='digital'?/Digital|Excel|Datos/.test(o.title):k==='equipo'?/Proyectos/.test(o.title):true));return `<div class="card"><div class="row"><span class="icsq" style="background:var(--red-50);color:var(--red)">${ic('target')}</span><div><b>${SKL_GAP[k]}</b><div class="xs muted">Nivel actual ${p.sk[k]}/5 · meta 4/5</div></div></div><div class="progress" style="margin:12px 0"><i style="width:${p.sk[k]*20}%;background:var(--red)"></i></div><div class="small ink2">Te recomendamos: <b>${o?esc(o.title):'Curso corto'}</b></div><button class="btn btn-o btn-sm" style="margin-top:10px" onclick="openOpp('${o?o.id:''}')">Ver curso ${ic('arrow','sm')}</button></div>`}).join('')}</div>`;
+  if(S.diagTab==='intereses')body=`<div class="g g3">${p.interests.map(i=>{const n=allOpps().filter(o=>o.area===i).length;return `<div class="card"><span class="icsq" style="background:var(--yel-50);color:var(--ink)">${ic(INT_ICON[i])}</span><b style="display:block;margin-top:10px">${i}</b><p class="small muted">${n} oportunidades conectadas con este interés</p><button class="lnk" style="margin-top:8px" onclick="S.oppQ='';S.oppFilter='todos';nav('oportunidades')">Explorar ${ic('arrow','sm')}</button></div>`}).join('')}</div>`;
+  if(S.diagTab==='contexto')body=matrixTable(true);
+  if(S.diagTab==='barreras')body=d.barriers.length?`<div class="g g2">${d.barriers.map(b=>`<div class="card"><div class="row"><span class="icsq" style="background:var(--yel-50);color:var(--yel-d)">${ic(b[0])}</span><div><b>${b[1]}</b><div class="small muted">${b[2]}</div></div></div><hr class="sep"><div class="small"><span class="tag gr">${ic('shield','sm')} Apoyo</span> ${b[3]}</div></div>`).join('')}</div>`:`<div class="card empty">${ic('shield','xl')}<p style="margin-top:8px"><b style="color:var(--ink)">No detectamos barreras críticas.</b><br>Tienes conectividad, dispositivo y tiempo para avanzar.</p></div>`;
+  return `<div class="ph"><div><h2>Mi diagnóstico</h2><p>Conoce tu perfil, tus fortalezas y las oportunidades para tu futuro.</p></div><div class="act"><button class="btn btn-o btn-sm" onclick="S.regStep=1;nav('registro')">${ic('edit','sm')} Actualizar datos</button></div></div>
+   <div class="tabsline">${tabs.map(t=>`<button class="${S.diagTab===t[0]?'on':''}" onclick="S.diagTab='${t[0]}';render()">${t[1]}</button>`).join('')}</div>${body}`;
+};
+function toOnline(){S.page.online='inicio';go('online');toast('Tu ruta se sincronizó con Educamás Online','rocket')}
+
+function matrixRows(){
+  const p=S.p,c=S.cfg,sk=p.sk;
+  const ok=b=>b?'ok':'no';
+  return[
+    ['Consentimiento',p.consent?'Autorizado':'No autorizado','Obligatorio para continuar',ok(p.consent)],
+    ['Edad',p.age+' años',`Entre ${c.ageMin} y ${c.ageMax} años`,ok(p.age>=c.ageMin&&p.age<=c.ageMax)],
+    ['Nivel socioeconómico','Estrato '+p.estrato,`Estratos 1 a ${c.estratoMax}`,ok(p.estrato<=c.estratoMax)],
+    ['Género',p.gender,`Meta de participación de mujeres: ${c.womenGoal}%`,'info'],
+    ['Nivel educativo',p.edu,'Bachiller o más para rutas A, C y D',p.edu==='Bachillerato incompleto'?'warn':'ok'],
+    ['Territorio',p.city,'Ciudades con Talent Hub activo',CITIES.slice(0,4).includes(p.city)?'ok':'warn'],
+    ['Competencias digitales',sk.digital+'/5',`Mínimo ${c.digitalMin}/5 · ≥4 avanzado (C/D)`,sk.digital<c.digitalMin?'warn':'ok'],
+    ['Inglés',sk.ingles+'/5','Referencia para rutas C y D',sk.ingles>=3?'ok':'warn'],
+    ['Pensamiento analítico',sk.analitico+'/5','Referencia de preparación',sk.analitico>=3?'ok':'warn'],
+    ['Habilidades socioemocionales',((sk.comunicacion+sk.equipo)/2).toFixed(1)+'/5','Comunicación y trabajo en equipo',(sk.comunicacion+sk.equipo)/2>=3?'ok':'warn'],
+    ['Claridad vocacional',p.clarity,'Alta + perfil preparado → ruta D',p.clarity==='Baja'?'warn':'ok'],
+    ['Intereses',p.interests.join(', '),'Orienta oferta y matching','info'],
+    ['Disponibilidad',p.hours+' h/semana',`Mínimo ${c.hoursMin} h · ≥20 h para ruta D`,p.hours>=c.hoursMin?'ok':'warn'],
+    ['Conectividad',p.connect,'Estable para formación intensiva',p.connect==='Estable en casa'?'ok':'warn'],
+    ['Acceso a dispositivo',p.device,'Computador para rutas A, C y D',p.device==='Computador propio'?'ok':'warn'],
+    ['Objetivo principal',p.goal,'Define la salida positiva esperada','info']
+  ];
+}
+function stBadge(s){return{ok:`<span class="st ok">${ic('check')}Cumple</span>`,warn:`<span class="st warn">${ic('alert')}Atención</span>`,no:`<span class="st no">${ic('x')}No cumple</span>`,info:`<span class="st info">${ic('eye')}Informativo</span>`}[s]}
+function matrixTable(personal){
+  return `<div class="card"><h3>${ic('clip')} Matriz de decisión · 16 variables ${personal?`<span class="lnk" style="color:var(--mut);font-weight:500">Resultado: ruta ${S.diag.route}</span>`:''}</h3><div class="tbl-wrap"><table class="tbl"><thead><tr><th>#</th><th>Variable</th>${personal?'<th>Tu dato</th>':''}<th>Regla / requisito</th>${personal?'<th>Estado</th>':''}</tr></thead><tbody>
+  ${matrixRows().map((r,i)=>`<tr><td class="muted num">${i+1}</td><td><b>${r[0]}</b></td>${personal?`<td>${esc(r[1])}</td>`:''}<td class="ink2">${r[2]}</td>${personal?`<td>${stBadge(r[3])}</td>`:''}</tr>`).join('')}</tbody></table></div></div>`;
+}
+
+PAGES.hub.rutas=()=>{
+  const d=S.diag;
+  return `<div class="ph"><div><h2>Mis rutas</h2><p>Según tu diagnóstico, Talent Hub te asigna una de cinco rutas. Así se decide.</p></div></div>
+  <div class="g g5">${Object.entries(ROUTES).map(([k,R])=>`<div class="card" style="border:${k===d.route?`2px solid ${R.color}`:'1px solid var(--line)'};${k===d.route?`background:${R.bg}`:''}"><div class="row" style="justify-content:space-between"><span class="icsq" style="background:${k===d.route?'#fff':R.bg};color:${R.color};font-weight:800;font-size:18px">${k}</span>${k===d.route?`<span class="tag" style="background:${R.color};color:#fff">Tu ruta</span>`:''}</div><b style="display:block;margin-top:10px">${R.name}</b><p class="small ink2" style="margin-top:4px">${R.cond}</p><hr class="sep"><div class="xs muted" style="font-weight:700;margin-bottom:4px">QUÉ RECIBES</div>${R.steps.map(s=>`<div class="xs ink2" style="padding:2px 0">• ${s[0]}</div>`).join('')}</div>`).join('')}</div>
+  <div class="split" style="margin-top:18px"><div class="card"><h3>${ic('spark')} ¿Por qué la ruta ${d.route}?</h3><ul class="why">${d.why.map(w=>`<li>${ic('check')}${esc(w)}</li>`).join('')}</ul></div>
+  <div class="card soft"><h3>${ic('users')} Revisión humana</h3><p class="small ink2">La IA propone la ruta y tu mentora la confirma contigo en la primera sesión. Puedes pedir un cambio si tu situación cambia.</p><button class="btn btn-o btn-sm" style="margin-top:12px" onclick="nav('mensajes')">Hablar con mi mentora</button></div></div>`;
+};
+
+
+/* ---------- Continuidad educativa y empleo (salidas positivas) ---------- */
+const EDU_ST=[['Nueva','Enviada'],['En revisión','En revisión'],['Entrevista','Entrevista'],['Aprobada','Admitida']];
+const JOB_ST=['Postulada','Contactada','Entrevista','Contratada'];
+function eduList(){return S.admis.filter(a=>a.name===S.p.name)}
+function jobsList(){const L=[];const m={contactado:'Contactada',entrevista:'Entrevista',contratado:'Contratada'};
+  if(S.pipe.me)L.push({title:S.vac.title,org:'Empresa Andina',state:m[S.pipe.me],src:'La empresa te encontró en su shortlist'});
+  Object.entries(S.applied).forEach(([id])=>{const o=allOpps().find(x=>x.id===id);if(o&&o.type==='vacante'&&!L.some(j=>j.title===o.title))L.push({title:o.title,org:o.org,state:'Postulada',src:'Te postulaste desde Educamás Online'})});return L}
+function track(states,cur){const i=states.indexOf(cur);return `<div class="trk">${states.map((s,k)=>`<span class="${k<i?'done':k===i?'cur':''}"><i></i>${s}</span>`).join('')}</div>`}
+function miniOpp(o){const t=OT[o.type];return `<div class="mini"><span class="th" style="background:${t.g}">${ic(t.i)}</span><div style="min-width:0"><b>${esc(o.title)}</b><small>${t.l} · ${esc(o.org)} · ${o.match}% match</small></div><button class="btn ${S.applied[o.id]?'btn-g':'btn-o'} btn-sm" onclick="openOpp('${o.id}')">${S.applied[o.id]?ic('check','sm'):'Ver'}</button></div>`}
+function conexionPage(){
+  const d=S.diag,opps=allOpps(),E=eduList(),J=jobsList();
+  const eduO=opps.filter(o=>['programa','beca','descuento'].includes(o.type)).slice(0,3);
+  const jobO=opps.filter(o=>o.type==='vacante').slice(0,3);
+  const hired=J.find(j=>j.state==='Contratada'),admitted=E.find(a=>a.state==='Aprobada');
+  const eduReady=Math.min(96,d.score+(['Universitario en curso','Técnico/Tecnólogo en curso','Técnico/Tecnólogo completo'].includes(S.p.edu)?10:4));
+  const jobReady=Math.min(96,Math.round(d.score*.7+progressPct()*.3));
+  const tips={'Conseguir empleo':'Prioriza vacantes y prácticas. Te dejamos becas para que sigas estudiando cuando quieras.','Estudiar y trabajar':'Combina una práctica o empleo de medio tiempo con un programa con beca. Es la salida más común en tu ruta.','Ingresar a la universidad':'Prioriza programas y becas. Una práctica fortalece tu hoja de vida para la admisión.','Emprender':'Te recomendamos cursos de negocios y mentoría; el empleo queda como plan de respaldo.'};
+  const eduCard=`<div class="path edu"><div class="ptop"><span class="pic">${ic('grad','lg')}</span><div><h3>Continuidad educativa</h3><p>Programas universitarios, técnicos y becas</p></div><div class="ready"><b class="num">${eduReady}%</b><small>preparación</small></div></div>
+    <div class="pstats"><div><b class="num">${opps.filter(o=>['programa','beca','descuento'].includes(o.type)&&o.match>=80).length}</b><span>ofertas con match</span></div><div><b class="num">${E.length}</b><span>postulaciones</span></div><div><b class="num">${opps.filter(o=>o.type==='beca').length}</b><span>becas abiertas</span></div></div>
+    <div class="pb"><h4>Recomendado para ti</h4>${eduO.map(miniOpp).join('')}
+    <h4 style="margin-top:14px">Mis postulaciones educativas</h4>${E.length?E.map(a=>`<div class="app-it"><div class="row" style="justify-content:space-between"><b class="small">${esc(a.offer)}</b>${a.state==='No admitida'?'<span class="tag r">No admitida</span>':`<span class="tag ${a.state==='Aprobada'?'gr':'y'}">${(EDU_ST.find(x=>x[0]===a.state)||[,a.state])[1]}</span>`}</div><div class="xs muted">Universidad del Bosque · ${a.date}</div>${track(EDU_ST.map(x=>x[1]),(EDU_ST.find(x=>x[0]===a.state)||[,''])[1])}</div>`).join(''):`<div class="empty" style="padding:14px">Aún no te postulas. <button class="lnk" onclick="S.oppFilter='programa';nav('oportunidades','online')">Explorar programas</button></div>`}
+    <button class="btn btn-o btn-sm" style="margin-top:10px;align-self:flex-start" onclick="S.oppFilter='beca';nav('oportunidades','online')">Ver becas y programas ${ic('arrow','sm')}</button></div></div>`;
+  const jobCard=`<div class="path job"><div class="ptop"><span class="pic">${ic('brief','lg')}</span><div><h3>Empleo</h3><p>Vacantes, prácticas y primer empleo formal</p></div><div class="ready"><b class="num">${jobReady}%</b><small>preparación</small></div></div>
+    <div class="pstats"><div><b class="num">${opps.filter(o=>o.type==='vacante'&&o.match>=80).length}</b><span>vacantes con match</span></div><div><b class="num">${J.length}</b><span>procesos activos</span></div><div><b class="num">${S.vacancies.filter(v=>v.practice&&v.status==='Activa').length}</b><span>prácticas abiertas</span></div></div>
+    <div class="pb"><h4>Recomendado para ti</h4>${jobO.map(miniOpp).join('')}
+    <h4 style="margin-top:14px">Mis procesos laborales</h4>${J.length?J.map(j=>`<div class="app-it"><div class="row" style="justify-content:space-between"><b class="small">${esc(j.title)}</b><span class="tag ${j.state==='Contratada'?'gr':'y'}">${j.state}</span></div><div class="xs muted">${esc(j.org)} · ${j.src}</div>${track(JOB_ST,j.state)}</div>`).join(''):`<div class="empty" style="padding:14px">Aún no tienes procesos. <button class="lnk" onclick="S.oppFilter='vacante';nav('oportunidades','online')">Ver vacantes</button></div>`}
+    <button class="btn btn-p btn-sm" style="margin-top:10px;align-self:flex-start" onclick="S.oppFilter='vacante';nav('oportunidades','online')">Ver vacantes y prácticas ${ic('arrow','sm')}</button></div></div>`;
+  const first=S.p.goal==='Conseguir empleo'?[jobCard,eduCard]:[eduCard,jobCard];
+  const out=hired||admitted;
+  const fu=[['Mes 1','Adaptación','Llamada con tu mentora y la empresa o universidad'],['Mes 3','Desempeño','Encuesta de satisfacción y plan de mejora'],['Mes 6','Consolidación','Verificamos permanencia y siguiente paso']];
+  return `<div class="ph"><div><h2>Continuidad educativa y empleo</h2><p>Tus salidas positivas: seguir estudiando, conseguir empleo o combinar ambas. Todo conectado con empresas y universidades aliadas.</p></div></div>
+  <div class="goal"><span class="icsq" style="background:var(--ink);color:var(--yel)">${ic('target')}</span><div style="flex:1;min-width:220px"><b>Tu objetivo</b><p class="small ink2">${tips[S.p.goal]||''}</p></div><select class="inp" onchange="S.p.goal=this.value;render()">${Object.keys(tips).map(g=>`<option ${g===S.p.goal?'selected':''}>${g}</option>`).join('')}</select></div>
+  <div class="g g2" style="align-items:start">${first.join('')}</div>
+  <div class="card" style="margin-top:16px"><h3>${ic('shield')} Seguimiento de tu salida positiva · paso 7 ${out?`<span class="tag gr">${hired?'Empleo: '+esc(hired.title):'Estudio: '+esc(admitted.offer)}</span>`:''}</h3>
+   ${out?`<div class="follow">${fu.map((f,i)=>`<div class="fp ${i===0?'done':i===1?'cur':''}"><div class="row" style="justify-content:space-between"><b>${f[0]}</b>${i===0?`<span class="st ok">${ic('check')}Hecho</span>`:i===1?'<span class="tag y">Próximo</span>':''}</div><div class="small" style="font-weight:700;margin-top:4px">${f[1]}</div><div class="xs muted">${f[2]}</div></div>`).join('')}</div>`
+   :`<div class="row" style="gap:14px"><span class="icsq" style="background:var(--bg);color:var(--mut)">${ic('lock')}</span><p class="small ink2">Se activa cuando te admitan en un programa o te contraten. Tu mentora te acompaña <b>6 meses</b> (mes 1, 3 y 6) para que te quedes y sigas creciendo.</p></div>`}
+  </div>`;
+}
+PAGES.hub.conexion=conexionPage;PAGES.online.conexion=conexionPage;
+
+PAGES.hub.oportunidades=()=>{
+  const o=allOpps().slice(0,8);
+  return `<div class="ph"><div><h2>Oportunidades para ti</h2><p>Seleccionadas según tus intereses (${S.p.interests.join(', ')}) y tu ruta ${S.diag.route}.</p></div><div class="act"><button class="btn btn-p btn-sm" onclick="nav('oportunidades','online')">Ver todas en Educamás Online ${ic('arrow','sm')}</button></div></div>
+  <div class="opps">${o.map(oppCard).join('')}</div>`;
+};
+
+PAGES.hub.mensajes=()=>{
+  const th={mentora:['Laura Gómez','Mentora asignada'],ia:['Asistente IA','Talent Hub · 24/7']};
+  const sugg=S.chat==='ia'?['¿Por qué me asignaron esta ruta?','Recomiéndame un curso','Ayúdame con mi hoja de vida']:['Quiero agendar una sesión','Tengo una duda con el curso','¿Cómo aplico a la práctica?'];
+  return `<div class="ph"><div><h2>Mensajes</h2><p>Acompañamiento humano e IA durante todo tu recorrido.</p></div></div>
+  <div class="chat"><div class="list">${Object.keys(th).map(k=>`<button class="th ${S.chat===k?'on':''}" onclick="S.chat='${k}';render()">${k==='ia'?`<span class="av" style="width:38px;height:38px;background:linear-gradient(135deg,#0B0B0C,#3A3A3E);color:var(--yel)">${ic('spark','sm')}</span>`:avatar(th[k][0],38)}<div style="min-width:0"><b class="small">${th[k][0]}</b><div class="xs muted">${th[k][1]}</div></div></button>`).join('')}</div>
+  <div class="conv"><div class="msgs" id="msgs">${S.msgs[S.chat].map(m=>`<div class="bub ${m[0]==='me'?'me':''}">${esc(m[1])}<small>${m[2]}</small></div>`).join('')}</div>
+  <div class="sugg">${sugg.map(s=>`<button class="chip" onclick="sendMsg('${s}')">${s}</button>`).join('')}</div>
+  <form class="composer" onsubmit="event.preventDefault();sendMsg(this.m.value)"><input class="inp" name="m" placeholder="Escribe un mensaje…" autocomplete="off"><button class="btn btn-p" aria-label="Enviar">${ic('send')}</button></form></div></div>`;
+};
+function sendMsg(t){t=String(t||'').trim();if(!t)return;const k=S.chat;const now=new Date().toLocaleTimeString('es-CO',{hour:'2-digit',minute:'2-digit'});S.msgs[k].push(['me',t,now]);render();scrollMsgs();
+  const R=ROUTES[S.diag.route];
+  const reply=k==='ia'?(/ruta/i.test(t)?`Tu ruta es ${S.diag.route} · ${R.name}. ${S.diag.why[1]||S.diag.why[0]}`:/curso/i.test(t)?`Te recomiendo "${allOpps().find(o=>o.type==='curso').title}". Tiene ${allOpps().find(o=>o.type==='curso').match}% de match contigo.`:/hoja/i.test(t)?'¡Claro! Empecemos por tu perfil: destaca tu formación actual y tus habilidades en '+S.diag.strengths.map(s=>SKL[s].toLowerCase()).join(', ')+'.':'Entendido. Te conecto con la información de tu ruta y tu mentora en Educamás Online.'):(/sesi|agend/i.test(t)?'¡Perfecto! Te dejé horarios disponibles en Educamás Online → Mentoría.':'Gracias por escribir. Lo revisamos juntas en nuestra próxima sesión');
+  setTimeout(()=>{S.msgs[k].push(['them',reply,now]);if(S.view==='hub'&&S.page.hub==='mensajes'){render();scrollMsgs()}},800)}
+function scrollMsgs(){const m=$('#msgs');if(m)m.scrollTop=m.scrollHeight}
+
+/* =========================================================
+   2 · EDUCAMÁS ONLINE
+   ========================================================= */
+function routeStepper(){const R=ROUTES[S.diag.route],cs=curStep();return `<div class="rstep">${R.steps.map((s,i)=>`<button class="s ${S.prog[i]>=100?'done':i===cs?'cur':''}" onclick="nav('ruta')"><span class="c">${S.prog[i]>=100?ic('check','sm'):i+1}</span><div><b>${s[0]}</b><small>${s[1]}</small></div></button>`).join('')}</div>`}
+function oppCard(o){const t=OT[o.type];const ap=S.applied[o.id];return `<div class="opp"><div class="img" style="background:${t.g}"><span class="typ">${t.l}</span><span class="mt">${o.match}%</span>${ic(t.i,'xl')}</div><div class="bd"><b>${esc(o.title)}</b><span class="xs muted">${esc(o.org)}</span><div class="meta"><span>${ic('pin')}${esc(o.m1)}</span><span>${ic('clock')}${esc(o.m2)}</span></div><button class="btn ${ap?'btn-g':'btn-p'} btn-sm btn-block" onclick="openOpp('${o.id}')">${ap?ic('check','sm')+' '+ap:t.cta}</button></div></div>`}
+function filteredOpps(){const f=S.oppFilter,q=S.oppQ.toLowerCase();return allOpps().filter(o=>(f==='todos'||o.type===f||(f==='beca'&&o.type==='descuento'))&&(!q||(o.title+' '+o.org).toLowerCase().includes(q)))}
+function oppFilters(){const F=[['todos','Todos'],['curso','Cursos cortos'],['programa','Programas universitarios'],['beca','Becas y descuentos'],['vacante','Vacantes'],['mentoria','Mentoría']];return `<div class="tabsline" style="margin-bottom:14px">${F.map(f=>`<button class="${S.oppFilter===f[0]?'on':''}" onclick="S.oppFilter='${f[0]}';render()">${f[1]}</button>`).join('')}</div>`}
+function openOpp(id){
+  const o=allOpps().find(x=>x.id===id);if(!o){toast('Oportunidad no disponible','alert');return}
+  const t=OT[o.type];const ap=S.applied[o.id];
+  const slots=o.type==='mentoria'?`<div class="lbl" style="margin:14px 0 8px">Elige un horario</div><div class="chips">${['Jue 4:00 p. m.','Vie 10:00 a. m.','Lun 6:00 p. m.'].map(s=>`<button class="slot ${S.mentorSlot===s?'on':''}" onclick="S.mentorSlot='${s}';openOpp('${id}')">${s}</button>`).join('')}</div>`:'';
+  modal(esc(o.title),`<div class="opp" style="border:0"><div class="img" style="background:${t.g};border-radius:14px;height:120px"><span class="typ">${t.l}</span>${ic(t.i,'xl')}</div></div>
+   <div class="row" style="margin-top:14px;flex-wrap:wrap"><span class="tag b">${esc(o.org)}</span><span class="tag">${ic('pin','sm')}${esc(o.m1)}</span><span class="tag">${ic('clock','sm')}${esc(o.m2)}</span><span class="tag gr">${o.match}% de match</span></div>
+   <p class="small ink2" style="margin-top:12px">${o.type==='vacante'?`Empresa aliada busca talento de Educamás.${o.skills?' Habilidades: '+o.skills.join(', ')+'.':''}`:o.type==='mentoria'?'Sesión uno a uno con un profesional del sector para orientar tu próximo paso.':`Oferta conectada con tu ruta ${S.diag.route} (${ROUTES[S.diag.route].name}) y tus intereses.`}</p>
+   <div class="card soft" style="margin-top:12px;padding:12px"><div class="small"><b>¿Por qué te la recomendamos?</b><ul class="why">${o.routes.includes(S.diag.route)?`<li>${ic('check')}Hace parte de tu ruta ${S.diag.route}</li>`:''}${S.p.interests.includes(o.area)?`<li>${ic('check')}Coincide con tu interés en ${o.area}</li>`:''}<li>${ic('check')}Compatible con tu disponibilidad (${S.p.hours} h/semana)</li></ul></div></div>${slots}`,
+   ap?`<span class="st ok">${ic('check')}${ap}</span>`:`<button class="btn btn-o" onclick="closeModal()">Cerrar</button><button class="btn btn-p" onclick="applyOpp('${id}')">${t.act}</button>`,`<span class="icsq" style="background:var(--blue-50);color:var(--blue)">${ic(t.i)}</span>`);
+}
+function applyOpp(id){const o=allOpps().find(x=>x.id===id);if(o.type==='mentoria'&&!S.mentorSlot){toast('Elige un horario','alert');return}
+  const lbl={curso:'Inscrita',programa:'Postulada',beca:'Aplicaste',descuento:'Descuento activo',vacante:'Postulada',mentoria:'Agendada'}[o.type];S.applied[id]=lbl;
+  if(o.src&&o.type!=='vacante'){o.src.apps++;S.admis.unshift({id:++uid,name:S.p.name,offer:o.title,route:S.diag.route,state:'Nueva',date:'Ahora'})}
+  if(o.type==='vacante'&&o.src)o.src.apps++;
+  closeModal();render();toast(o.type==='mentoria'?`Mentoría agendada · ${S.mentorSlot}`:o.src&&o.type!=='vacante'?`${lbl} · la Universidad del Bosque ya ve tu postulación`:`${lbl}: ${o.title}`,'check')}
+
+PAGES.online.inicio=()=>{
+  const R=ROUTES[S.diag.route],pct=progressPct();
+  return `<div class="welcome" style="margin-bottom:18px"><div><h2>Hola, ${esc(firstNames(S.p.name))} ${ic('spark','lg')}</h2><p class="ink2">Aquí tienes tu ruta personalizada para seguir construyendo tu futuro.</p></div>
+    <div class="prog-card"><div class="row" style="justify-content:space-between"><b class="small">Mi progreso</b><button class="lnk" onclick="nav('ruta')">Ver detalle ${ic('arrow','sm')}</button></div><div class="row" style="margin-top:8px"><div class="progress g" style="flex:1"><i style="width:${pct}%"></i></div><b class="num small">${pct}%</b></div></div></div>
+  <div class="split">
+    <div class="card"><h3>${ic('rocket')} Tu ruta recomendada <span class="tag" style="background:${R.bg};color:${R.color}">Ruta ${S.diag.route} · ${R.name}</span><button class="lnk" onclick="nav('ruta')">Ver ruta completa ${ic('arrow','sm')}</button></h3>${routeStepper()}</div>
+    <div class="card"><h3>${ic('users')} Mi acompañamiento</h3><div class="mentor">${avatar('Laura Gómez',42)}<div><div class="xs muted">Mi mentora asignada</div><b>Laura Gómez</b></div></div>
+      <div class="stack" style="gap:6px;margin-top:10px"><button class="acc-item" onclick="nav('mentoria')">${ic('cal')} ${S.mentorSlot?`Próxima sesión: ${S.mentorSlot}`:'Sesiones de orientación'}</button><button class="acc-item" onclick="nav('mensajes','hub')">${ic('msg')} Escribir a mi mentora</button><button class="acc-item" onclick="nav('formacion')">${ic('book')} Recursos para mi perfil</button></div></div>
+  </div>
+  <div class="row" style="margin:22px 0 10px;justify-content:space-between"><h3 style="font-size:16px">Explora oportunidades para ti</h3><button class="lnk" onclick="nav('oportunidades')">Ver todas ${ic('arrow','sm')}</button></div>
+  ${oppFilters()}<div class="opps">${filteredOpps().slice(0,5).map(oppCard).join('')||'<div class="empty">Sin resultados</div>'}</div>`;
+};
+PAGES.online.ruta=()=>{
+  const R=ROUTES[S.diag.route],cs=curStep();
+  return `<div class="ph"><div><h2>Mi ruta · ${S.diag.route}. ${R.name}</h2><p>${R.desc}</p></div><div class="act"><span class="tag gr">${progressPct()}% completado</span></div></div>
+  <div class="stack">${R.steps.map((s,i)=>{const done=S.prog[i]>=100,cur=i===cs;return `<div class="card row" style="gap:16px;${cur?'border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-50)':''}"><span class="icsq" style="width:52px;height:52px;background:${done?'var(--yel)':cur?'var(--blue)':'var(--bg)'};color:${done?'var(--ink)':cur?'#fff':'var(--mut)'}">${done?ic('check','lg'):ic(s[2],'lg')}</span>
+    <div style="flex:1;min-width:0"><div class="row"><b>Paso ${i+1}. ${s[0]}</b><span class="tag">${s[1]}</span>${done?'<span class="tag gr">Completado</span>':cur?'<span class="tag b">En curso</span>':i>cs?`<span class="tag">${ic('lock','sm')} Bloqueado</span>`:''}</div>
+    <div class="row" style="margin-top:8px"><div class="progress ${done?'g':''}" style="flex:1;max-width:360px"><i style="width:${S.prog[i]}%"></i></div><span class="small num muted">${S.prog[i]}%</span></div></div>
+    ${cur?`<button class="btn btn-p btn-sm" onclick="advance(${i})">${S.prog[i]?'Continuar':'Empezar'} ${ic('arrow','sm')}</button>`:done?`<button class="btn btn-o btn-sm" onclick="toast('Certificado descargado','download')">${ic('download','sm')} Certificado</button>`:''}</div>`}).join('')}</div>
+  ${cs>=4?`<div class="routebox" style="margin-top:16px;background:var(--green-50);border-color:#BDEBD0"><span class="rk" style="color:var(--green)">${ic('award','lg')}</span><div><b>¡Completaste tu ruta!</b><p class="small ink2">Ya estás en el paso 5: matching con empresas y universidades.</p></div><button class="btn btn-p btn-sm" style="margin-left:auto" onclick="S.oppFilter='vacante';nav('oportunidades')">Ver vacantes</button></div>`:''}`;
+};
+function advance(i){S.prog[i]=Math.min(100,S.prog[i]+25);if(S.prog[i]===100)toast(`Completaste: ${ROUTES[S.diag.route].steps[i][0]}`,'award');render()}
+PAGES.online.formacion=()=>{
+  const R=ROUTES[S.diag.route];const extra=Object.entries(S.applied).filter(([id,l])=>l==='Inscrita').map(([id])=>allOpps().find(o=>o.id===id)).filter(Boolean);
+  return `<div class="ph"><div><h2>Formación</h2><p>Tus cursos y módulos activos en Educamás Online.</p></div></div>
+  <div class="g g3">${R.steps.map((s,i)=>`<div class="card"><div class="opp" style="border:0"><div class="img" style="background:${OT[s[1]==='Curso corto'?'curso':s[1]==='Oportunidad'||s[1]==='Empleo'?'vacante':s[1]==='Mentoría'?'mentoria':'programa'].g};border-radius:12px;height:84px">${ic(s[2],'xl')}</div></div><b style="display:block;margin-top:10px">${s[0]}</b><div class="xs muted">${s[1]} · Ruta ${S.diag.route}</div><div class="row" style="margin:10px 0"><div class="progress" style="flex:1"><i style="width:${S.prog[i]}%"></i></div><span class="xs num">${S.prog[i]}%</span></div><button class="btn ${S.prog[i]>=100?'btn-g':'btn-p'} btn-sm btn-block" onclick="${S.prog[i]>=100?'':`advance(${i})`}" ${i>curStep()?'disabled style="opacity:.45"':''}>${S.prog[i]>=100?ic('check','sm')+' Completado':i>curStep()?ic('lock','sm')+' Bloqueado':'Continuar'}</button></div>`).join('')}
+  ${extra.map(o=>`<div class="card"><div class="opp" style="border:0"><div class="img" style="background:${OT.curso.g};border-radius:12px;height:84px">${ic('laptop','xl')}</div></div><b style="display:block;margin-top:10px">${esc(o.title)}</b><div class="xs muted">Curso electivo · ${esc(o.org)}</div><div class="row" style="margin:10px 0"><div class="progress" style="flex:1"><i style="width:5%"></i></div><span class="xs">5%</span></div><button class="btn btn-o btn-sm btn-block" onclick="toast('Abriendo el curso…','book')">Ir al curso</button></div>`).join('')}</div>`;
+};
+PAGES.online.oportunidades=()=>`<div class="ph"><div><h2>Oportunidades</h2><p>Cursos, programas, becas, vacantes y mentorías de aliados, ordenados por match contigo.</p></div><div class="act"><div style="position:relative"><input class="inp" style="padding-left:34px;width:240px" placeholder="Buscar…" value="${esc(S.oppQ)}" oninput="S.oppQ=this.value;$('#og').innerHTML=filteredOpps().map(oppCard).join('')||'<div class=empty>Sin resultados</div>'"><span style="position:absolute;left:10px;top:11px;color:var(--mut)">${ic('search','sm')}</span></div></div></div>
+  ${oppFilters()}<div class="opps" id="og">${filteredOpps().map(oppCard).join('')}</div>`;
+PAGES.online.mentoria=()=>{
+  const days=[['Jue','4:00 p. m.'],['Jue','6:00 p. m.'],['Vie','10:00 a. m.'],['Vie','3:00 p. m.'],['Lun','6:00 p. m.'],['Mar','9:00 a. m.']];
+  return `<div class="ph"><div><h2>Mentoría</h2><p>Agenda sesiones uno a uno con tu mentora y profesionales aliados.</p></div></div>
+  <div class="split"><div class="card"><h3>${ic('cal')} Agenda con Laura Gómez</h3><div class="chips">${days.map(d=>{const s=d.join(' ');return `<button class="slot ${S.mentorSlot===s?'on':''}" onclick="S.mentorSlot='${s}';render()">${s}</button>`}).join('')}</div>
+   <div class="field" style="margin-top:16px"><label>¿Sobre qué quieres hablar?</label><select class="inp"><option>Revisar mi ruta</option><option>Preparar entrevista</option><option>Elegir programa universitario</option><option>Bienestar</option></select></div>
+   <button class="btn btn-p" onclick="${S.mentorSlot?`toast('Sesión confirmada · ${S.mentorSlot}','cal')`:`toast('Elige un horario','alert')`}">Confirmar sesión</button></div>
+   <div class="card"><h3>Tu mentora</h3><div class="mentor">${avatar('Laura Gómez',52)}<div><b>Laura Gómez</b><div class="xs muted">Psicóloga · 6 años en orientación socio-ocupacional</div></div></div><div class="stack" style="gap:6px;margin-top:12px;font-size:13px"><div class="row">${ic('check','sm')} 3 sesiones realizadas</div><div class="row">${ic('star','sm')} 4,9 de calificación</div><div class="row">${ic('clock','sm')} Próxima: ${S.mentorSlot||'sin agendar'}</div></div></div></div>`;
+};
+PAGES.online.comunidad=()=>{
+  const posts=[['Juan David Ramírez','Terminé el curso de Análisis de Datos con Python y ya tengo entrevista con Empresa Andina. ¡Sí se puede!','Hace 2 h'],['Valentina Morales','¿Alguien quiere armar grupo de estudio para Inglés para la Empleabilidad? Nos vemos los martes.','Hace 5 h'],['Laura Gómez','Recordatorio: este jueves tenemos taller abierto de hoja de vida con IA a las 5:00 p. m.','Ayer']];
+  return `<div class="ph"><div><h2>Comunidad</h2><p>Jóvenes, mentores y aliados compartiendo avances.</p></div></div><div class="stack" style="max-width:720px">${posts.map((p,i)=>`<div class="card"><div class="row">${avatar(p[0],40)}<div><b class="small">${p[0]}</b><div class="xs muted">${p[2]}</div></div></div><p style="margin-top:10px">${p[1]}</p><div class="row" style="margin-top:10px"><button class="chip ${S.likes[i]?'on':''}" onclick="S.likes[${i}]=!S.likes[${i}];render()">${ic('heart')} ${12+i*7+(S.likes[i]?1:0)}</button><button class="chip">${ic('msg')} Responder</button></div></div>`).join('')}</div>`;
+};
+PAGES.online.logros=()=>{
+  const b=[['Perfil creado','user',true],['Diagnóstico completado','clip',true],['Primer módulo','book',S.prog[0]>=100],['Ruta al 50%','route',progressPct()>=50],['Mentoría agendada','cal',!!S.mentorSlot],['Primera postulación','brief',Object.values(S.applied).length>0],['Ruta completada','award',progressPct()>=100],['Vinculado','star',false]];
+  return `<div class="ph"><div><h2>Mis logros</h2><p>${b.filter(x=>x[2]).length} de ${b.length} insignias desbloqueadas.</p></div></div><div class="g g4">${b.map(x=>`<div class="badge-t ${x[2]?'':'lock'}"><span class="md" style="background:${x[2]?'var(--yel)':'var(--bg)'}">${ic(x[1],'lg')}</span><b class="small">${x[0]}</b><span class="xs muted">${x[2]?'Desbloqueada':'Bloqueada'}</span></div>`).join('')}</div>`;
+};
+
+/* =========================================================
+   3 · EMPRESA
+   ========================================================= */
+function mring(m){const c=m>=85?'#FDC300':m>=75?'#0B0B0C':'#A3A3A8';return `<span class="mring" style="background:conic-gradient(${c} ${m*3.6}deg,#EEEEEA 0)"><b>${m}%</b><small>Match</small></span>`}
+function shortHTML(){
+  return shortlist().map(c=>{const st=S.pipe[c.id];return `<div class="cand">${avatar(c.name,44)}<div style="min-width:0"><div class="nm">${esc(c.name)} ${c.live?'<span class="tag y">Nueva · Talent Hub</span>':''}</div><div class="sub">${esc(c.edu)}<br>${esc(c.inst)} · Ruta ${c.route}</div><div class="chips" style="gap:4px;margin-top:5px">${c.skills.slice(0,4).map(s=>`<span class="tag ${S.vac.skills.includes(s)?'b':''}">${esc(s)}</span>`).join('')}</div></div>${mring(c.m)}<div class="row acts"><button class="btn btn-o btn-sm" onclick="profile('${c.id}')">Ver perfil</button>${st?`<button class="btn btn-g btn-sm" onclick="nav('candidatos')">${ic('check','sm')}${st==='contactado'?'Contactado':st==='entrevista'?'Entrevista':'Contratado'}</button>`:`<button class="btn btn-p btn-sm" onclick="contact('${c.id}')">Contactar</button>`}</div></div>`}).join('');
+}
+function refreshShort(){const el=$('#short');if(el)el.innerHTML=shortHTML()}
+function contact(id){S.pipe[id]='contactado';const c=[me(),...POOL].find(x=>x.id===id);toast(`Mensaje enviado a ${c.name}`,'send');if(id==='me')S.msgs.mentora.push(['them','¡Buenas noticias! Empresa Andina quiere contactarte para la vacante de Analista de Datos Jr.','Ahora']);render()}
+function profile(id){const c=[me(),...POOL].find(x=>x.id===id);const m=candMatch(c);const R=ROUTES[c.route];
+  modal(esc(c.name),`<div class="row">${avatar(c.name,64)}<div><div class="small ink2">${esc(c.edu)} · ${esc(c.inst)}</div><div class="small muted">${ic('pin','sm')} ${esc(c.city)} · ${c.hours} h/semana</div><div class="row" style="margin-top:6px"><span class="tag" style="background:${R.bg};color:${R.color}">Ruta ${c.route} · ${R.name}</span></div></div><div style="margin-left:auto">${mring(m)}</div></div>
+  <div class="g g2" style="margin-top:18px"><div class="card soft" style="padding:14px"><div class="xs muted" style="font-weight:700">EMPLEABILIDAD</div><b style="font-size:22px">${c.emp}%</b></div><div class="card soft" style="padding:14px"><div class="xs muted" style="font-weight:700">MODALIDAD</div><b>${c.mod.join(' · ')}</b></div></div>
+  <div class="lbl" style="margin:16px 0 8px">Habilidades <small>(azul = requeridas por tu vacante)</small></div><div class="chips">${c.skills.map(s=>`<span class="tag ${S.vac.skills.includes(s)?'b':''}">${esc(s)}</span>`).join('')}</div>
+  <div class="card soft" style="margin-top:14px;padding:12px"><div class="small"><b>${ic('shield','sm')} Acompañado por Educamás</b><p class="ink2" style="margin-top:4px">Diagnóstico validado, formación en Educamás Online y mentoría activa durante los primeros 6 meses de vinculación.</p></div></div>`,
+  S.pipe[id]?`<span class="st ok">${ic('check')}En tu proceso</span>`:`<button class="btn btn-o" onclick="closeModal()">Cerrar</button><button class="btn btn-p" onclick="closeModal();contact('${id}')">Contactar</button>`)}
+
+PAGES.empresa.vacantes=()=>{
+  const v=S.vac;
+  return `<div class="g" style="grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);align-items:start">
+  <div class="card"><h3>${ic('plus')} Publicar nueva vacante</h3>
+    <div class="field"><label>Cargo / rol</label><input class="inp" value="${esc(v.title)}" oninput="S.vac.title=this.value" placeholder="Ej. Analista de Datos Jr."></div>
+    <div class="field"><label>Habilidades requeridas <small>· el shortlist se actualiza en vivo</small></label><div class="chips">${SKILLS.map(s=>`<button class="chip ${v.skills.includes(s)?'on':''}" onclick="togSkill('${s}')">${s}</button>`).join('')}</div></div>
+    <div class="fr"><div class="field"><label>Modalidad</label><select class="inp" onchange="S.vac.mod=this.value;refreshShort()">${['Presencial','Híbrido','Remoto'].map(o=>`<option ${o===v.mod?'selected':''}>${o}</option>`).join('')}</select></div>
+    <div class="field"><label>Ciudad</label><select class="inp" onchange="S.vac.city=this.value;refreshShort()">${CITIES.map(o=>`<option ${o===v.city?'selected':''}>${o}</option>`).join('')}</select></div></div>
+    <div class="fr"><div class="field"><label>Salario <small>(opcional)</small></label><input class="inp" value="${esc(v.salary)}" oninput="S.vac.salary=this.value"></div>
+    <div class="field"><label>Sector</label><select class="inp" onchange="S.vac.sector=this.value">${['Tecnología','Servicios','Comercio','Salud','Educación','Manufactura'].map(o=>`<option ${o===v.sector?'selected':''}>${o}</option>`).join('')}</select></div></div>
+    <div class="field"><label>Descripción</label><textarea class="inp" oninput="S.vac.desc=this.value">${esc(v.desc)}</textarea></div>
+    <label class="check" style="margin-bottom:16px"><input type="checkbox" ${v.practice?'checked':''} onchange="S.vac.practice=this.checked;refreshShort()">Esta vacante es una oportunidad de práctica</label>
+    <div class="row"><button class="btn btn-o" onclick="pubVac('Borrador')">Guardar borrador</button><button class="btn btn-p" style="flex:1" onclick="pubVac('Activa')">Publicar vacante</button></div>
+  </div>
+  <div class="card"><h3>${ic('users')} Shortlist de candidatos<span class="lnk" style="color:var(--mut);font-weight:500">Top 5 por IA</span></h3><p class="small muted" style="margin:-6px 0 6px">Estudiantes que se ajustan a tu vacante.</p><div id="short">${shortHTML()}</div></div></div>
+  <div class="card" style="margin-top:18px"><h3>${ic('brief')} Tus vacantes</h3><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Cargo</th><th>Modalidad</th><th>Habilidades</th><th>Postulaciones</th><th>Estado</th><th></th></tr></thead><tbody>
+  ${S.vacancies.map(x=>`<tr><td><b>${esc(x.title)}</b>${x.practice?' <span class="tag p">Práctica</span>':''}</td><td>${x.mod} · ${x.city}</td><td class="small ink2">${x.skills.join(', ')}</td><td class="num"><b>${x.apps}</b></td><td><span class="tag ${x.status==='Activa'?'gr':''}">${x.status}</span></td><td><button class="btn btn-o btn-sm" onclick="togVac(${x.id})">${x.status==='Activa'?'Pausar':'Publicar'}</button></td></tr>`).join('')}</tbody></table></div></div>`;
+};
+function togSkill(s){const a=S.vac.skills;a.includes(s)?a.splice(a.indexOf(s),1):a.push(s);render()}
+function pubVac(st){const v=S.vac;if(!v.title.trim()||!v.skills.length){toast('Escribe el cargo y elige al menos una habilidad','alert');return}S.vacancies.unshift({id:++uid,title:v.title,skills:[...v.skills],mod:v.mod,city:v.city,apps:0,status:st,practice:v.practice});render();toast(st==='Activa'?`Vacante publicada · visible en Educamás Online para ${shortlist().length} candidatos con match`:'Borrador guardado',st==='Activa'?'check':'file')}
+function togVac(id){const x=S.vacancies.find(v=>v.id===id);x.status=x.status==='Activa'?'Pausada':'Activa';render()}
+PAGES.empresa.candidatos=()=>{
+  const all=shortlist();const col=k=>all.filter(c=>(S.pipe[c.id]||'shortlist')===k);
+  const next={shortlist:['contactado','Contactar'],contactado:['entrevista','Agendar entrevista'],entrevista:['contratado','Contratar'],contratado:null};
+  const cols=[['shortlist','Shortlist','users','var(--blue)'],['contactado','Contactados','send','var(--purple)'],['entrevista','Entrevista','cal','var(--yel-d)'],['contratado','Contratados','award','var(--green)']];
+  return `<div class="ph"><div><h2>Candidatos · ${esc(S.vac.title)}</h2><p>Mueve a cada candidato por tu proceso. Las contrataciones se reportan al equipo Educamás.</p></div></div>
+  <div class="kan">${cols.map(([k,l,i,c])=>`<div class="kcol"><h4><span style="color:${c}">${ic(i)}</span>${l}<span class="tag" style="margin-left:auto">${col(k).length}</span></h4>${col(k).map(x=>`<div class="kcard"><div class="row">${avatar(x.name,34)}<div style="min-width:0"><b class="small">${esc(x.name)}</b><div class="xs muted">Ruta ${x.route} · ${x.m}% match</div></div></div>${next[k]?`<button class="btn btn-o btn-sm btn-block" style="margin-top:10px" onclick="movePipe('${x.id}','${next[k][0]}')">${next[k][1]} ${ic('arrow','sm')}</button>`:`<div class="xs" style="color:var(--green);font-weight:700;margin-top:8px">${ic('check','sm')} Seguimiento Educamás activo</div>`}</div>`).join('')||'<div class="xs muted" style="padding:10px">Sin candidatos</div>'}</div>`).join('')}</div>`;
+};
+function movePipe(id,st){S.pipe[id]=st;if(st==='contratado'){S.extra.vinc++;toast('¡Contratación registrada! Educamás inicia el seguimiento','award')}render()}
+PAGES.empresa.inicio=()=>{
+  const n=Object.values(S.pipe);
+  return `<div class="ph"><div><h2>Hola, Empresa Andina</h2><p>Talento diagnosticado, formado y acompañado por Educamás.</p></div><div class="act"><button class="btn btn-p btn-sm" onclick="nav('vacantes')">${ic('plus','sm')} Nueva vacante</button></div></div>
+  <div class="g g4">${[['Vacantes activas',S.vacancies.filter(v=>v.status==='Activa').length,'brief','var(--blue)','var(--blue-50)'],['En shortlist',shortlist().length,'users','var(--purple)','var(--purple-50)'],['En entrevista',n.filter(x=>x==='entrevista').length,'cal','var(--yel-d)','var(--yel-50)'],['Contratados',n.filter(x=>x==='contratado').length+4,'award','var(--green)','var(--green-50)']].map(k=>`<div class="kpi"><span class="icsq" style="background:${k[4]};color:${k[3]}">${ic(k[2])}</span><div><div class="v num">${k[1]}</div><div class="l">${k[0]}</div></div></div>`).join('')}</div>
+  <div class="split" style="margin-top:18px"><div class="card"><h3>Mejores candidatos esta semana<button class="lnk" onclick="nav('vacantes')">Ver shortlist ${ic('arrow','sm')}</button></h3>${shortlist().slice(0,3).map(c=>`<div class="cand" style="grid-template-columns:auto 1fr auto">${avatar(c.name,40)}<div><div class="nm">${esc(c.name)}</div><div class="sub">${esc(c.edu)} · Ruta ${c.route}</div></div>${mring(c.m)}</div>`).join('')}</div>
+  <div class="card soft"><h3>${ic('shield')} Beneficios de contratar con Educamás</h3><ul class="why"><li>${ic('check')}Candidatos con diagnóstico de 16 variables</li><li>${ic('check')}Formación pertinente a tu vacante</li><li>${ic('check')}Seguimiento 6 meses post-vinculación</li><li>${ic('check')}Reporte de impacto y empleo inclusivo</li></ul></div></div>`;
+};
+PAGES.empresa.reportes=()=>{
+  const byR=['A','B','C','D'].map(r=>[r,[me(),...POOL].filter(c=>c.route===r).length]);const mx=Math.max(...byR.map(x=>x[1]));
+  return `<div class="ph"><div><h2>Reportes</h2><p>Tu contribución al empleo juvenil inclusivo.</p></div><div class="act"><button class="btn btn-o btn-sm" onclick="toast('Reporte descargado','download')">${ic('download','sm')} Descargar PDF</button></div></div>
+  <div class="g g3"><div class="kpi"><div><div class="v num">68%</div><div class="l">de tus contratados son mujeres</div></div></div><div class="kpi"><div><div class="v num">12 días</div><div class="l">tiempo promedio de contratación</div></div></div><div class="kpi"><div><div class="v num">94%</div><div class="l">retención a 6 meses</div></div></div></div>
+  <div class="card" style="margin-top:16px"><h3>Candidatos disponibles por ruta</h3>${byR.map(([r,n])=>`<div class="hbar"><span>Ruta ${r} · ${ROUTES[r].name}</span><div class="t" data-tip="<b>Ruta ${r}</b><br>${n} candidatos"><i style="width:${n/mx*100}%;background:var(--blue)"></i></div><span class="vv num">${n}</span></div>`).join('')}</div>`;
+};
+PAGES.empresa.perfil=()=>`<div class="ph"><div><h2>Mi empresa</h2><p>Así te ven los jóvenes en Educamás Online.</p></div></div><div class="split"><div class="card"><div class="fr"><div class="field"><label>Razón social</label><input class="inp" value="Empresa Andina S.A.S."></div><div class="field"><label>NIT</label><input class="inp" value="901.234.567-8"></div></div><div class="fr"><div class="field"><label>Sector</label><select class="inp"><option>Tecnología</option></select></div><div class="field"><label>Tamaño</label><select class="inp"><option>51 a 200 empleados</option></select></div></div><div class="field"><label>Compromiso de inclusión</label><textarea class="inp">Contratamos jóvenes de estratos 1 a 3 y promovemos la participación de mujeres en roles de tecnología.</textarea></div><button class="btn btn-p" onclick="toast('Perfil actualizado')">Guardar cambios</button></div><div class="card soft"><div class="row">${avatar('Empresa Andina',54)}<div><b>Empresa Andina</b><div class="xs muted">Aliado Educamás desde 2024</div></div></div><div class="chips" style="margin-top:12px"><span class="tag gr">Empleador inclusivo</span><span class="tag b">Tecnología</span></div></div></div>`;
+
+/* =========================================================
+   4 · UNIVERSIDAD
+   ========================================================= */
+const CAT_PAGE={programa:'programas',curso:'cursos',beca:'becas',descuento:'descuentos'};
+const CAT_L={programa:'Programas',curso:'Cursos cortos',beca:'Becas',descuento:'Descuentos'};
+function uniOffers(cat){
+  const list=S.uni.filter(o=>o.cat===cat);
+  const views=list.reduce((a,o)=>a+o.apps*9,0),apps=list.reduce((a,o)=>a+o.apps,0);
+  return `<div class="ph"><div><h2>Gestiona tu oferta académica</h2><p>Publica y actualiza tus programas, cursos, becas y beneficios. Lo publicado aparece en Educamás Online.</p></div><div class="act"><button class="btn btn-p" onclick="offerForm()">${ic('plus','sm')} Cargar oferta</button></div></div>
+  <div class="tabsline">${Object.keys(CAT_L).map(c=>`<button class="${c===cat?'on':''}" onclick="nav('${CAT_PAGE[c]}')">${CAT_L[c]} <span class="c">(${S.uni.filter(o=>o.cat===c).length})</span></button>`).join('')}</div>
+  <div class="split"><div class="card" style="padding:6px 18px">${list.map(o=>{const t=OT[o.cat];return `<div class="offer"><span class="th" style="background:${t.g}">${ic(t.i,'lg')}</span><div style="min-width:0"><b>${esc(o.title)}</b><div class="row" style="gap:6px;margin-top:5px;flex-wrap:wrap"><span class="tag b">${t.l}</span><span class="tag">${esc(o.area)}</span>${o.tags.map(g=>`<span class="tag">${esc(g)}</span>`).join('')}</div><div class="xs muted" style="margin-top:5px;display:flex;gap:12px;flex-wrap:wrap"><span>${ic('pin','sm')} ${esc(o.mod)}</span><span>${ic('clock','sm')} ${esc(o.dur)}</span><span>${ic('users','sm')} <b class="num">${o.apps}</b> postulaciones</span><span>Rutas ${o.routes.join(', ')}</span></div></div>
+    <div class="row oa"><span class="xs muted">${o.pub?'Publicado':'Oculto'}</span><button class="switch ${o.pub?'on':''}" onclick="togPub(${o.id})" aria-label="Publicar en Educamás Online"></button><button class="btn btn-o btn-sm" onclick="offerForm(${o.id})">Editar</button></div></div>`}).join('')||'<div class="empty">Aún no tienes ofertas en esta categoría.</div>'}</div>
+  <div class="stack"><div class="card"><h3>${ic('eye')} Visibilidad en Educamás Online</h3><div class="g g2"><div><div class="kpi" style="border:0;padding:0"><div><div class="v num">${fmt(views)}</div><div class="l">vistas</div></div></div></div><div><div class="kpi" style="border:0;padding:0"><div><div class="v num">${fmt(apps)}</div><div class="l">postulaciones</div></div></div></div></div><hr class="sep"><div class="small ink2">${list.filter(o=>o.pub).length} de ${list.length} ofertas publicadas.</div></div>
+  <div class="card soft"><h3>${ic('spark')} Sugerencia IA</h3><p class="small ink2">92 jóvenes en ruta A tienen brecha en <b>inglés</b> y <b>manejo de datos</b>. Considera abrir un curso corto nocturno.</p><button class="btn btn-o btn-sm" style="margin-top:10px" onclick="offerForm()">Crear oferta sugerida</button></div></div></div>`;
+}
+['programas','cursos','becas','descuentos'].forEach((p,i)=>{PAGES.uni[p]=()=>uniOffers(['programa','curso','beca','descuento'][i])});
+function togPub(id){const o=S.uni.find(x=>x.id===id);o.pub=!o.pub;render();toast(o.pub?`"${o.title}" ahora es visible en Educamás Online`:`"${o.title}" se ocultó de Educamás Online`,o.pub?'eye':'lock')}
+let editing=null;
+function offerForm(id){
+  const cat={programas:'programa',cursos:'curso',becas:'beca',descuentos:'descuento'}[S.page.uni]||'curso';
+  const o=id?S.uni.find(x=>x.id===id):{cat,title:'',area:'Tecnología',mod:'Virtual',dur:'',apps:0,pub:true,tags:[],routes:['A']};editing={...o,routes:[...o.routes]};
+  modal(id?'Editar oferta':'Cargar oferta',`
+   <div class="field"><label>Tipo de oferta</label><div class="seg" id="ofc">${Object.keys(CAT_L).map(c=>`<button class="${editing.cat===c?'on':''}" onclick="editing.cat='${c}';[...this.parentNode.children].forEach(b=>b.classList.remove('on'));this.classList.add('on')">${OT[c].l}</button>`).join('')}</div></div>
+   <div class="field"><label>Nombre</label><input class="inp" id="of_t" value="${esc(editing.title)}" placeholder="Ej. Inglés técnico nocturno"></div>
+   <div class="fr"><div class="field"><label>Área</label><select class="inp" id="of_a">${INTERESTS.map(i=>`<option ${i[0]===editing.area?'selected':''}>${i[0]}</option>`).join('')}</select></div>
+   <div class="field"><label>Modalidad</label><select class="inp" id="of_m">${['Virtual','En línea','Presencial','Híbrido'].map(m=>`<option ${m===editing.mod?'selected':''}>${m}</option>`).join('')}</select></div></div>
+   <div class="field"><label>Duración / cobertura</label><input class="inp" id="of_d" value="${esc(editing.dur)}" placeholder="Ej. 6 semanas · o · Cobertura 50%"></div>
+   <div class="field"><label>Rutas objetivo <small>(a quién se recomienda)</small></label><div class="chips">${Object.keys(ROUTES).map(r=>`<button class="chip ${editing.routes.includes(r)?'on':''}" onclick="const a=editing.routes;a.includes('${r}')?a.splice(a.indexOf('${r}'),1):a.push('${r}');this.classList.toggle('on')">Ruta ${r}</button>`).join('')}</div></div>
+   <label class="check"><input type="checkbox" id="of_p" ${editing.pub?'checked':''}>Publicar de inmediato en Educamás Online</label>`,
+   `<button class="btn btn-o" onclick="closeModal()">Cancelar</button><button class="btn btn-p" onclick="saveOffer(${id||0})">${id?'Guardar cambios':'Publicar oferta'}</button>`,`<span class="icsq" style="background:var(--purple-50);color:var(--purple)">${ic('grad')}</span>`);
+}
+function saveOffer(id){const t=$('#of_t').value.trim();if(!t){toast('Escribe el nombre de la oferta','alert');return}
+  const data={cat:editing.cat,title:t,area:$('#of_a').value,mod:$('#of_m').value,dur:$('#of_d').value||'Por definir',routes:editing.routes.length?editing.routes:['A'],pub:$('#of_p').checked};
+  if(id)Object.assign(S.uni.find(x=>x.id===id),data);else S.uni.unshift({id:++uid,apps:0,tags:['Nuevo'],...data});
+  closeModal();S.page.uni=CAT_PAGE[data.cat];render();toast(data.pub?'Oferta publicada · ya aparece en Educamás Online':'Oferta guardada','check')}
+PAGES.uni.admisiones=()=>{
+  const cls={'Nueva':'y','En revisión':'b','Entrevista':'p','Aprobada':'gr','No admitida':'r'};
+  return `<div class="ph"><div><h2>Admisiones</h2><p>Postulaciones que llegan desde Educamás Online, con la ruta y el diagnóstico de cada joven.</p></div></div>
+  <div class="card"><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Joven</th><th>Oferta</th><th>Ruta</th><th>Recibida</th><th>Estado</th><th>Acciones</th></tr></thead><tbody>
+  ${S.admis.map(a=>`<tr><td><div class="row">${avatar(a.name,32)}<b>${esc(a.name)}</b></div></td><td>${esc(a.offer)}</td><td><span class="tag" style="background:${ROUTES[a.route].bg};color:${ROUTES[a.route].color}">${a.route}</span></td><td class="muted">${a.date}</td><td><span class="tag ${cls[a.state]}">${a.state}</span></td><td><div class="row" style="gap:6px"><button class="btn btn-o btn-sm" onclick="admit(${a.id},'Aprobada')">Aprobar</button><button class="btn btn-o btn-sm" onclick="admit(${a.id},'Entrevista')">Entrevista</button></div></td></tr>`).join('')}</tbody></table></div></div>`;
+};
+function admit(id,s){const a=S.admis.find(x=>x.id===id);a.state=s;render();toast(`${a.name}: ${s}`)}
+PAGES.uni.inicio=()=>{
+  const pub=S.uni.filter(o=>o.pub);
+  return `<div class="ph"><div><h2>Universidad del Bosque</h2><p>Tu oferta conectada con jóvenes diagnosticados por Talent Hub.</p></div><div class="act"><button class="btn btn-p btn-sm" onclick="nav('cursos');setTimeout(offerForm,50)">${ic('plus','sm')} Cargar oferta</button></div></div>
+  <div class="g g4">${[['Ofertas publicadas',pub.length,'grad','var(--purple)','var(--purple-50)'],['Postulaciones',fmt(S.uni.reduce((a,o)=>a+o.apps,0)),'file','var(--blue)','var(--blue-50)'],['Becas activas',S.uni.filter(o=>o.cat==='beca'&&o.pub).length,'award','var(--yel-d)','var(--yel-50)'],['Nuevas admisiones',S.admis.filter(a=>a.state==='Nueva'||a.state==='En revisión').length,'users','var(--green)','var(--green-50)']].map(k=>`<div class="kpi"><span class="icsq" style="background:${k[4]};color:${k[3]}">${ic(k[2])}</span><div><div class="v num">${k[1]}</div><div class="l">${k[0]}</div></div></div>`).join('')}</div>
+  <div class="card" style="margin-top:18px"><h3>Ofertas con más postulaciones</h3>${[...S.uni].sort((a,b)=>b.apps-a.apps).slice(0,6).map(o=>{const mx=Math.max(...S.uni.map(x=>x.apps));return `<div class="hbar"><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(o.title)}</span><div class="t" data-tip="<b>${esc(o.title)}</b><br>${o.apps} postulaciones"><i style="width:${o.apps/mx*100}%;background:var(--purple)"></i></div><span class="vv num">${o.apps}</span></div>`}).join('')}</div>`;
+};
+PAGES.uni.reportes=()=>`<div class="ph"><div><h2>Reportes</h2><p>Impacto de tu oferta en el ecosistema.</p></div><div class="act"><button class="btn btn-o btn-sm" onclick="toast('Reporte descargado','download')">${ic('download','sm')} Exportar</button></div></div>
+  <div class="g g3"><div class="kpi"><div><div class="v num">71%</div><div class="l">de becados son mujeres</div></div></div><div class="kpi"><div><div class="v num">86%</div><div class="l">de becados en estratos 1–2</div></div></div><div class="kpi"><div><div class="v num">4,6/5</div><div class="l">satisfacción de estudiantes</div></div></div></div>
+  <div class="card" style="margin-top:16px"><h3>Postulaciones por categoría</h3>${Object.keys(CAT_L).map(c=>{const n=S.uni.filter(o=>o.cat===c).reduce((a,o)=>a+o.apps,0),mx=Math.max(...Object.keys(CAT_L).map(k=>S.uni.filter(o=>o.cat===k).reduce((a,o)=>a+o.apps,0)));return `<div class="hbar"><span>${CAT_L[c]}</span><div class="t" data-tip="<b>${CAT_L[c]}</b><br>${fmt(n)} postulaciones"><i style="width:${n/mx*100}%;background:var(--purple)"></i></div><span class="vv num">${fmt(n)}</span></div>`}).join('')}</div>`;
+
+/* =========================================================
+   5 · EQUIPO EDUCAMÁS
+   ========================================================= */
+const MULT={terr:{'Todos':1,'Bogotá, D.C.':.41,'Medellín':.22,'Cali':.19,'Barranquilla':.18},aliado:{'Todos':1,'Empresas':.64,'Universidades':.27,'Organizaciones':.09},coh:{'2026-1':1,'2025-2':.86,'2025-1':.71},ruta:{'Todas':1,'A':.38,'B':.27,'C':.16,'D':.14,'E':.05}};
+const FUN=[['Registro',12548],['Diagnóstico',9321],['Ruta',6104],['Formación',4287],['Postulaciones',2783],['Vinculación',1892],['Seguimiento',1245]];
+const MONTHS=['Ene','Feb','Mar','Abr','May','Jun'];
+const SER=[['Registros','#0B0B0C',[1450,1780,2010,2240,2390,2678]],['Formación','#9A9AA0',[480,720,930,1180,1310,1484]],['Vinculaciones','#E0A800',[120,190,280,360,430,512]]];
+function tm(){const t=S.team;return MULT.terr[t.terr]*MULT.aliado[t.aliado]*MULT.coh[t.coh]*MULT.ruta[t.ruta]}
+function teamFilters(){const t=S.team;const sel=(k,l)=>`<label class="f">${l}<select class="inp" onchange="S.team.${k}=this.value;render()">${Object.keys(MULT[k]).map(o=>`<option ${t[k]===o?'selected':''}>${o}</option>`).join('')}</select></label>`;
+  return `<div class="filters">${sel('terr','Territorio')}${sel('aliado','Aliado')}${sel('coh','Cohorte')}${sel('ruta','Ruta')}<span class="tag" style="margin-left:auto;padding:8px 12px">${ic('cal','sm')} Últimos 6 meses</span></div>`}
+function lineChart(m){
+  const W=620,H=240,l=44,r=96,t=14,b=28,iw=W-l-r,ih=H-t-b;
+  const data=SER.map(s=>[s[0],s[1],s[2].map(v=>v*m)]);const max=Math.max(...data.flatMap(d=>d[2]))*1.12||1;
+  const nice=Math.pow(10,Math.floor(Math.log10(max)));const top=Math.ceil(max/nice)*nice;
+  const x=i=>l+i*iw/5,y=v=>t+ih-(v/top)*ih;
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Evolución mensual de registros, formación y vinculaciones">`;
+  for(let g=0;g<=4;g++){const v=top*g/4;s+=`<line x1="${l}" x2="${W-r}" y1="${y(v)}" y2="${y(v)}" stroke="#EEEEEA"/><text x="${l-8}" y="${y(v)+4}" text-anchor="end" font-size="10.5" fill="#8A8A90">${fmt(v)}</text>`}
+  MONTHS.forEach((mo,i)=>s+=`<text x="${x(i)}" y="${H-8}" text-anchor="middle" font-size="11" fill="#8A8A90">${mo}</text>`);
+  s+=`<line id="xh" x1="0" x2="0" y1="${t}" y2="${t+ih}" stroke="#0B0B0C" stroke-width="1" stroke-dasharray="3 3" opacity="0"/>`;
+  const ends=[];
+  data.forEach(([n,c,v])=>{s+=`<polyline fill="none" stroke="${c}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" points="${v.map((vv,i)=>x(i)+','+y(vv)).join(' ')}"/><circle cx="${x(5)}" cy="${y(v[5])}" r="4.5" fill="${c}" stroke="#fff" stroke-width="2"/>`;ends.push([n,v[5],y(v[5])])});
+  ends.sort((a,b)=>a[2]-b[2]);for(let i=1;i<ends.length;i++)if(ends[i][2]-ends[i-1][2]<26)ends[i][2]=ends[i-1][2]+26;
+  ends.forEach(e=>s+=`<text x="${x(5)+10}" y="${e[2]-1}" font-size="11.5" font-weight="800" fill="#0B0B0C">${fmt(e[1])}</text><text x="${x(5)+10}" y="${e[2]+12}" font-size="10.5" fill="#4A4A4F">${e[0]}</text>`);
+  MONTHS.forEach((mo,i)=>s+=`<rect x="${x(i)-iw/10}" y="${t}" width="${iw/5}" height="${ih}" fill="transparent" onmouseenter="const h=document.getElementById('xh');h.setAttribute('x1',${x(i)});h.setAttribute('x2',${x(i)});h.setAttribute('opacity',.35)" onmouseleave="document.getElementById('xh').setAttribute('opacity',0)" data-tip="<b>${mo} 2026</b><br>${data.map(d=>`${d[0]}: ${fmt(d[2][i])}`).join('<br>')}"/>`);
+  return s+'</svg>';
+}
+PAGES.equipo.monitoreo=()=>{
+  const m=tm(),e=S.extra;
+  const k=[['Jóvenes registrados',FUN[0][1]*m+e.reg,'+18%','users','var(--blue)','var(--blue-50)'],['Diagnósticos completados',FUN[1][1]*m+e.diag,'74% del total','clip','var(--purple)','var(--purple-50)'],['En formación',FUN[3][1]*m,'+32%','book','var(--teal)','var(--teal-50)'],['Postulaciones',FUN[4][1]*m+Object.keys(S.applied).length,'+40%','brief','var(--yel-d)','var(--yel-50)'],['Vinculaciones',FUN[5][1]*m+e.vinc,'+28%','award','var(--green)','var(--green-50)']];
+  const fv=FUN.map((f,i)=>f[1]*m+(i<2?e.reg:i===5?e.vinc:0));const fmax=fv[0]||1;
+  const rd=[['A',.38],['B',.27],['C',.16],['D',.14],['E',.05]];
+  return `${teamFilters()}
+  <div class="g g5">${k.map(x=>`<div class="kpi"><span class="icsq" style="background:${x[5]};color:${x[4]}">${ic(x[3])}</span><div><div class="v num">${fmt(x[1])}</div><div class="l">${x[0]}</div><div class="d">${x[2]}</div></div></div>`).join('')}</div>
+  <div class="g" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);margin-top:16px">
+    <div class="card chart"><h3>Embudo del ecosistema<span class="lnk" style="color:var(--mut);font-weight:500">7 pasos</span></h3><div class="funnel">${fv.map((v,i)=>`<div class="col" data-tip="<b>${FUN[i][0]}</b><br>${fmt(v)} jóvenes · ${Math.round(v/fmax*100)}% del registro"><b class="num">${fmt(v)}</b><i style="height:${Math.max(2,v/fmax*150)}px;opacity:${1-i*.08}"></i></div>`).join('')}</div>
+      <div class="funnel-l">${FUN.map((f,i)=>`<span>${f[0]}<small>${Math.round(fv[i]/fmax*100)}%</small></span>`).join('')}</div></div>
+    <div class="card chart"><h3>Monitoreo integral<span class="legend" style="margin-left:auto">${SER.map(s=>`<span><i style="background:${s[1]}"></i>${s[0]}</span>`).join('')}</span></h3>${lineChart(m)}</div>
+  </div>
+  <div class="g g3" style="margin-top:16px">
+    <div class="card"><h3>Distribución por ruta</h3>${rd.map(([r,p])=>{const v=FUN[1][1]*MULT.terr[S.team.terr]*MULT.coh[S.team.coh]*MULT.aliado[S.team.aliado]*p;const dim=S.team.ruta!=='Todas'&&S.team.ruta!==r;return `<div class="hbar" style="grid-template-columns:130px 1fr 54px;${dim?'opacity:.35':''}"><span><b>${r}</b> · ${ROUTES[r].name}</span><div class="t" data-tip="<b>Ruta ${r}</b> · ${ROUTES[r].name}<br>${fmt(v)} jóvenes (${Math.round(p*100)}%)"><i style="width:${p/.38*100}%;background:${ROUTES[r].color}"></i></div><span class="vv num">${Math.round(p*100)}%</span></div>`}).join('')}</div>
+    <div class="card"><h3>${ic('alert')} Alertas y seguimiento<button class="lnk" onclick="nav('alertas')">Ver todas ${ic('arrow','sm')}</button></h3>${S.alerts.filter(a=>!a.done).slice(0,3).map(alertRow).join('')||'<div class="empty">Sin alertas pendientes</div>'}</div>
+    <div class="card"><h3>${ic('building')} Aliados activos</h3>${[['Empresas',84,'var(--blue)'],['Universidades',28,'var(--purple)'],['Organizaciones',16,'var(--teal)']].map(a=>`<div class="hbar" style="grid-template-columns:110px 1fr 40px"><span>${a[0]}</span><div class="t" data-tip="<b>${a[0]}</b><br>${a[1]} aliados activos"><i style="width:${a[1]/84*100}%;background:${a[2]}"></i></div><span class="vv num">${a[1]}</span></div>`).join('')}
+      <hr class="sep"><div class="row" style="justify-content:space-between"><span class="small ink2">Participación de mujeres</span><b class="num">72% <span class="st ok" style="font-size:11px">${ic('check')}meta ${S.cfg.womenGoal}%</span></b></div><div class="progress g" style="margin-top:6px;position:relative"><i style="width:72%"></i></div></div>
+  </div>
+  ${salidasCard(m)}`;
+};
+function salidasCard(m){
+  const tot=Math.round(FUN[5][1]*m+S.extra.vinc);
+  const G=[['Empleo',.60,'#FDC300'],['Continuidad educativa',.29,'#0B0B0C'],['Estudio + trabajo',.11,'#9A9AA0']];
+  const T=[['Empleo formal',.46,'#FDC300'],['Práctica profesional',.14,'#FDC300'],['Pregrado universitario',.17,'#0B0B0C'],['Técnico / tecnológico',.12,'#0B0B0C'],['Estudia y trabaja',.11,'#9A9AA0']];
+  return `<div class="card" style="margin-top:16px"><h3>${ic('target')} Salidas positivas · continuidad educativa y empleo<span class="lnk" style="color:var(--mut);text-decoration:none;font-weight:500">${fmt(tot)} jóvenes vinculados</span></h3>
+   <div class="g" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px">
+    <div><div class="g g3">${G.map(g=>`<div><div class="row" style="gap:6px"><i style="width:10px;height:10px;border-radius:3px;background:${g[2]};display:inline-block"></i><span class="small ink2">${g[0]}</span></div><div class="num" style="font-size:24px;font-weight:800;margin-top:2px">${fmt(tot*g[1])}</div><div class="xs muted">${Math.round(g[1]*100)}% de las vinculaciones</div></div>`).join('')}</div>
+     <div class="stackbar">${G.map(g=>`<i style="width:${g[1]*100}%;background:${g[2]}" data-tip="<b>${g[0]}</b><br>${fmt(tot*g[1])} jóvenes (${Math.round(g[1]*100)}%)"></i>`).join('')}</div>
+     <p class="xs muted">Retención a 6 meses: empleo 84% · continuidad educativa 91%</p></div>
+    <div>${T.map(t=>`<div class="hbar" style="grid-template-columns:150px 1fr 54px"><span>${t[0]}</span><div class="t" data-tip="<b>${t[0]}</b><br>${fmt(tot*t[1])} jóvenes"><i style="width:${t[1]/.46*100}%;background:${t[2]}"></i></div><span class="vv num">${fmt(tot*t[1])}</span></div>`).join('')}</div>
+   </div></div>`;
+}
+function alertRow(a){const c={r:['var(--red-50)','var(--red)','alert'],y:['var(--yel-50)','var(--yel-d)','alert'],b:['var(--blue-50)','var(--blue)','eye']}[a.sev];return `<div class="alert"><span class="sev" style="background:${c[0]};color:${c[1]}">${ic(c[2])}</span><div style="flex:1;min-width:0"><b class="small">${a.t}</b><div class="xs muted">${a.d}</div></div><button class="btn btn-o btn-sm" onclick="resolveAlert(${a.id})">${a.sev==='r'?'Asignar mentor':'Gestionar'}</button></div>`}
+function resolveAlert(id){const a=S.alerts.find(x=>x.id===id);a.done=true;render();toast(`Gestionada: ${a.t}`)}
+PAGES.equipo.inicio=()=>{
+  const m=tm();const fv=FUN.map(f=>f[1]*m);
+  const ph=[[0,3,'Diagnóstico y orientación · Talent Hub','var(--yel-50)','#9A6700'],[3,4,'Formación · Educamás Online','var(--blue-50)','var(--blue)'],[4,7,'Salidas positivas · Talent Hub','var(--green-50)','#0E7C3E']];
+  return `<div class="ph"><div><h2>Mapa del ecosistema</h2><p>Dónde están hoy los jóvenes en los 7 pasos del recorrido.</p></div></div>${teamFilters()}
+  <div class="journey">${ph.map(p=>`<div class="jphase" style="grid-column:span ${p[1]-p[0]};background:${p[3]};color:${p[4]}">${p[2]}</div>`).join('')}
+  ${FUN.map((f,i)=>`<button class="jstep" onclick="nav('${i<3?'jovenes':i===3?'monitoreo':'aliados'}')" data-tip="<b>${f[0]}</b><br>${fmt(fv[i])} jóvenes"><span class="n" style="background:var(--yel)">${i+1}</span><b>${f[0]}</b><span class="num" style="font-size:20px;font-weight:800">${fmt(fv[i])}</span><small>${Math.round(fv[i]/fv[0]*100)}% del registro</small></button>`).join('')}</div>
+  <div class="split" style="margin-top:18px"><div class="card"><h3>Actividad reciente</h3>${[['user',`${esc(S.p.name)} completó su diagnóstico · Ruta ${S.diag.route}`,'Hace 5 min'],['brief','Empresa Andina publicó "Analista de Datos Jr."','Hace 1 h'],['grad','Universidad del Bosque cargó 2 cursos cortos','Hace 3 h'],['award','Juan David Ramírez fue vinculado','Ayer']].map(a=>`<div class="alert"><span class="sev" style="background:var(--blue-50);color:var(--blue)">${ic(a[0])}</span><div style="flex:1"><b class="small">${a[1]}</b><div class="xs muted">${a[2]}</div></div></div>`).join('')}</div>
+  <div class="card soft"><h3>${ic('target')} Metas del programa</h3>${[['Jóvenes registrados',12548+S.extra.reg,15000],['Vinculaciones',1892+S.extra.vinc,2500],['Mujeres (%)',72,S.cfg.womenGoal]].map(g=>`<div style="margin-bottom:12px"><div class="row small" style="justify-content:space-between"><span>${g[0]}</span><b class="num">${fmt(g[1])} / ${fmt(g[2])}</b></div><div class="progress ${g[1]>=g[2]?'g':''}" style="margin-top:5px"><i style="width:${Math.min(100,g[1]/g[2]*100)}%"></i></div></div>`).join('')}</div></div>`;
+};
+PAGES.equipo.jovenes=()=>{
+  const rows=[{name:S.p.name,city:S.p.city,route:S.diag.route,state:'Formación',prog:progressPct(),mentor:'Laura Gómez',last:'Hoy'},
+    ...POOL.map((c,i)=>({name:c.name,city:c.city,route:c.route,state:['Vinculado','Postulando','Formación','Postulando','Formación','Diagnóstico','Formación','Postulando'][i],prog:[100,85,60,92,40,15,55,78][i],mentor:['Laura Gómez','Andrés Pinto','Laura Gómez','Diana Ruiz','Andrés Pinto','Diana Ruiz','Carlos Vélez','Laura Gómez'][i],last:['Ayer','Hoy','Hace 2 días','Hoy','Hace 8 días','Hace 9 días','Hoy','Hace 3 días'][i]}))]
+    .filter(r=>(S.yr==='Todas'||r.route===S.yr)&&(!S.yq||r.name.toLowerCase().includes(S.yq.toLowerCase())));
+  const sc={'Vinculado':'gr','Postulando':'p','Formación':'b','Diagnóstico':'y'};
+  return `<div class="ph"><div><h2>Jóvenes</h2><p>Seguimiento individual con ruta, avance y mentor asignado.</p></div><div class="act"><input class="inp" style="width:220px" placeholder="Buscar joven…" value="${esc(S.yq)}" onchange="S.yq=this.value;render()"><select class="inp" style="width:140px" onchange="S.yr=this.value;render()">${['Todas','A','B','C','D','E'].map(r=>`<option ${S.yr===r?'selected':''}>${r==='Todas'?'Todas las rutas':'Ruta '+r}</option>`).join('')}</select></div></div>
+  <div class="card"><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Joven</th><th>Territorio</th><th>Ruta</th><th>Estado</th><th>Avance</th><th>Mentor</th><th>Última actividad</th></tr></thead><tbody>
+  ${rows.map(r=>`<tr><td><div class="row">${avatar(r.name,32)}<b>${esc(r.name)}</b></div></td><td>${esc(r.city)}</td><td><span class="tag" style="background:${ROUTES[r.route].bg};color:${ROUTES[r.route].color}">${r.route}</span></td><td><span class="tag ${sc[r.state]}">${r.state}</span></td><td style="min-width:120px"><div class="row"><div class="progress" style="flex:1"><i style="width:${r.prog}%"></i></div><span class="xs num">${r.prog}%</span></div></td><td>${r.mentor}</td><td class="${/8|9/.test(r.last)?'':'muted'}" style="${/8|9/.test(r.last)?'color:var(--red);font-weight:700':''}">${r.last}</td></tr>`).join('')||'<tr><td colspan="7" class="empty">Sin resultados</td></tr>'}</tbody></table></div></div>`;
+};
+PAGES.equipo.aliados=()=>{
+  const a=[['Empresa Andina','Empresa','Tecnología',S.vacancies.filter(v=>v.status==='Activa').length,4+Object.values(S.pipe).filter(x=>x==='contratado').length,'Alta'],['Universidad del Bosque','Universidad','Educación',S.uni.filter(o=>o.pub).length,S.admis.length,'Alta'],['Retail Andes','Empresa','Comercio',3,7,'Media'],['SENA Regional','Institución','Formación',12,0,'Alta'],['Fundación Futuro','Organización','Social',2,0,'Baja'],['Clínica Norte','Empresa','Salud',1,2,'Baja']];
+  return `<div class="ph"><div><h2>Aliados</h2><p>Empresas, universidades y organizaciones del ecosistema.</p></div><div class="act"><button class="btn btn-p btn-sm" onclick="toast('Invitación enviada','send')">${ic('plus','sm')} Invitar aliado</button></div></div>
+  ${S.requests.length?`<div class="card" style="margin-bottom:16px"><h3>${ic('shield')} Solicitudes de acceso <span class="tag y">${S.requests.filter(r=>r.state==='Pendiente').length} pendientes</span></h3><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Organización</th><th>Tipo</th><th>Correo</th><th>Recibida</th><th>Estado</th><th></th></tr></thead><tbody>${S.requests.map(r=>`<tr><td><b>${esc(r.org)}</b></td><td>${r.type}</td><td class="ink2">${esc(r.email)}</td><td class="muted">${r.date}</td><td><span class="tag ${r.state==='Aprobada'?'gr':r.state==='Rechazada'?'r':'y'}">${r.state}</span></td><td>${r.state==='Pendiente'?`<div class="row" style="gap:6px"><button class="btn btn-p btn-sm" onclick="reqState(${r.id},'Aprobada')">Aprobar</button><button class="btn btn-o btn-sm" onclick="reqState(${r.id},'Rechazada')">Rechazar</button></div>`:''}</td></tr>`).join('')}</tbody></table></div></div>`:''}<div class="card"><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Aliado</th><th>Tipo</th><th>Sector</th><th>Ofertas activas</th><th>Vinculaciones / admisiones</th><th>Actividad</th></tr></thead><tbody>
+  ${a.map(r=>`<tr><td><div class="row">${avatar(r[0],32)}<b>${r[0]}</b></div></td><td>${r[1]}</td><td>${r[2]}</td><td class="num">${r[3]}</td><td class="num">${r[4]}</td><td><span class="tag ${r[5]==='Alta'?'gr':r[5]==='Media'?'y':'r'}">${r[5]}</span></td></tr>`).join('')}</tbody></table></div></div>`;
+};
+function reqState(id,st){const r=S.requests.find(x=>x.id===id);r.state=st;render();toast(st==='Aprobada'?`Acceso activado para ${r.org} · se envió el correo de bienvenida`:`Solicitud de ${r.org} rechazada`,st==='Aprobada'?'shield':'x')}
+PAGES.equipo.alertas=()=>`<div class="ph"><div><h2>Alertas</h2><p>Casos que requieren acción del equipo.</p></div></div><div class="card">${S.alerts.map(a=>a.done?`<div class="alert" style="opacity:.5"><span class="sev" style="background:var(--green-50);color:var(--green)">${ic('check')}</span><div style="flex:1"><b class="small">${a.t}</b><div class="xs muted">Gestionada</div></div></div>`:alertRow(a)).join('')}</div>`;
+PAGES.equipo.reportes=()=>`<div class="ph"><div><h2>Reportes</h2><p>Informes de impacto para financiadores y aliados.</p></div></div><div class="g g3">${[['Informe mensual de impacto','Junio 2026 · PDF'],['Indicadores de género e inclusión','Cohorte 2026-1 · XLSX'],['Reporte para financiadores','Trimestre 2 · PDF'],['Trazabilidad por ruta A–E','Todas las cohortes · XLSX'],['Empleabilidad a 6 meses','Seguimiento · PDF'],['Calidad de la oferta académica','Universidades · PDF']].map(r=>`<div class="card"><span class="icsq" style="background:var(--blue-50);color:var(--blue)">${ic('file')}</span><b style="display:block;margin-top:10px">${r[0]}</b><div class="xs muted">${r[1]}</div><button class="btn btn-o btn-sm" style="margin-top:12px" onclick="toast('Descargando ${r[0]}','download')">${ic('download','sm')} Descargar</button></div>`).join('')}</div>`;
+PAGES.equipo.config=()=>{
+  const c=S.cfg;const num=(k,l,min,max,suf='')=>`<div class="field"><label>${l}</label><div class="row"><input class="inp num" type="number" min="${min}" max="${max}" value="${c[k]}" onchange="S.cfg.${k}=+this.value;S.diag=diagnose();render();toast('Parámetro actualizado · rutas recalculadas','gear')" style="max-width:110px"><span class="small muted">${suf}</span></div></div>`;
+  return `<div class="ph"><div><h2>Configuración del programa</h2><p>Parámetros de focalización que usa el motor de rutas. Cambiarlos recalcula el diagnóstico en vivo.</p></div></div>
+  <div class="split"><div class="card"><div class="fr">${num('ageMin','Edad mínima',14,30,'años')}${num('ageMax','Edad máxima',18,40,'años')}</div><div class="fr">${num('estratoMax','Estrato máximo focalizado',1,6)}${num('womenGoal','Meta de participación de mujeres',0,100,'%')}</div><div class="fr">${num('digitalMin','Nivel digital mínimo (1–5)',1,5,'para ruta A')}${num('hoursMin','Disponibilidad mínima',0,40,'h/semana')}</div></div>
+  <div class="card soft"><h3>${ic('eye')} Vista previa</h3><p class="small ink2">Con estos parámetros, ${esc(firstNames(S.p.name))} queda en:</p><div class="routebox" style="margin-top:10px;background:${ROUTES[S.diag.route].bg};border-color:transparent"><span class="rk" style="color:${ROUTES[S.diag.route].color};font-weight:800;font-size:20px">${S.diag.route}</span><b>${ROUTES[S.diag.route].name}</b></div></div></div>
+  <div style="margin-top:18px">${matrixTable(false)}</div>`;
+};
+
+try{const r=sessionStorage.getItem('th_role');if(r&&ROLES[r]){S.user={role:r};S.view=ROLES[r].home[0];S.page[S.view]=ROLES[r].home[1]}}catch(e){}
+render();prev();
+/* keep live preview in sync after re-renders on registro */
+const _r=render;render=function(){_r();if(S.view==='hub'&&S.page.hub==='registro')prev();if(S.view==='hub'&&S.page.hub==='mensajes')scrollMsgs()};
+</script>
+</body></html>
